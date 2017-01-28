@@ -1,0 +1,175 @@
+@import "bourbon/bourbon"
+@import "variables"
+
+html
+	-webkit-font-smoothing: subpixel-antialiased !important
+	-webkit-backface-visibility: hidden
+	-moz-backface-visibility: hidden
+	-ms-backface-visibility: hidden
+
+html.js .loader
+	background: none repeat scroll 0 0 #ffffff
+	bottom: 0
+	height: 100%
+	left: 0
+	position: fixed
+	right: 0
+	top: 0
+	width: 100%
+	z-index: 9999
+	background-color: $color-blue
+	.loader_inner
+		background-image: url("../img/loader.svg")
+		background-size: cover
+		background-repeat: no-repeat
+		background-position: center center
+		height: 60px
+		width: 60px
+		margin-top: -30px
+		margin-left: -30px
+		left: 50%
+		top: 50%
+		position: absolute
+
+body
+	font-family: $font, $helvetica
+	font-weight: 400
+	font-size: 16px
+	min-width: 320px
+	position: relative
+	line-height: em(22px)
+	-webkit-font-smoothing: antialiased
+	overflow-x: hidden
+
+body input:focus:required:invalid,
+body textarea:focus:required:invalid
+	color: red
+body input:required:valid,
+body textarea:required:valid
+	color: green
+
+.hidden
+	display: none
+
+
+.headers
+	font-weight: normal
+	margin: 0
+
+h1, h2, h3, h4, h5, h6
+	@extend .headers
+
+h1
+	font-size: em(35px)
+	line-height: em(17px)
+
+h2
+	font-size: em(30px)
+
+h3
+	font-size: em(16px)
+
+
+.ul_menu
+	list-style-type: none
+	margin: 0
+	padding: 0
+	li
+		display: inline-block
+		a
+			outline: 0
+
+
+button
+	padding: 5px 25px
+	background: none
+	border: 1px solid
+	border-radius: 3px
+	transition: 0.2s
+	outline: none
+	&.red-fill
+		background-color: $color-red
+		border-color: $color-red
+		color: white
+
+	&.red
+		color: $color-red
+		border-color: $color-red
+
+	&.white-fill
+		background-color: white
+		border-color: white
+		color: $color-blue
+
+	&.white
+		color: white
+		border-color: white
+
+	&.icon
+		i
+			margin-left: 5px
+			font-size: em(14px)
+
+
+section
+	padding: 70px 0
+	background-color: white
+
+
+
+#scroller
+	position: fixed
+	bottom: 30px
+	left: 20px
+	cursor: pointer
+	display: none
+	font-size: 30px
+	color: $color-light-grey
+	opacity: 0.4
+	transition: 0.2s
+	padding: 20px
+	z-index: 10000
+	&:hover
+		opacity: 1
+
+
+.txt-main-color
+	color: $color-blue
+
+
+
+
+.mansory-grid
+	&:after
+		content: ''
+		display: block
+		clear: both
+
+
+	.grid-sizer,
+	.grid-item
+
+		width: 20%
+
+	.grid-item
+		float: left
+
+	.grid-item img
+		display: block
+		width: 100%
+
+
+@import "header"
+@import "blocks/head"
+@import "blocks/callforpapers"
+@import "blocks/objectives"
+@import "blocks/speakers"
+@import "blocks/dates"
+@import "blocks/areas"
+@import "blocks/subm_details"
+@import "blocks/organizer"
+@import "blocks/footer"
+
+
+/** HAMBURGER-BUTTON **/
+@import "hamburger"

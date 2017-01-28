@@ -1,0 +1,72 @@
+section.dates
+  background-color: #f9f9f9
+  h2
+    text-align: center
+
+  .center-block
+    display: block
+    margin-left: auto
+    margin-right: auto
+    text-align: center
+
+  .dates-list
+    padding-top: 100px
+    .start-point
+      position: relative
+      width: 40px
+      height: 40px
+      background: none
+      color: $color-blue
+      border: 2px solid
+      border-radius: 50%
+      text-align: center
+      line-height: 40px
+      margin-bottom: 70px
+      &::after
+        content: ''
+        position: absolute
+        width: 1px
+        height: 60px
+        top: 60px
+        left: 19px
+        background-color: $color-light-grey
+
+    .icon
+      background-size: cover
+      width: 85px
+      height: 73px
+      margin: 110px auto 20px
+
+  .point
+    position: relative
+    &::after
+      content: ''
+      position: absolute
+      width: 1px
+      margin-top: 20px
+      height: 60px
+      background-color: $color-light-grey
+    &.last
+      &::after
+        display: none
+        content: ''
+
+    .title
+      padding-top: 15px
+      color: black
+      font-weight: 500
+      font-size: em(18px)
+
+    .date
+      font-size: em(16px)
+      font-weight: 300
+      color: black
+
+    .description
+      font-size: em(14em)
+      font-weight: 300
+      padding-top: 10px
+      color: #535353
+      width: 50%
+      margin: 0 auto
+

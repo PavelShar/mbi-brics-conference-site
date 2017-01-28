@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3 credentials">{{ footer.left_text }}</div>
+        <div class="col-lg-4 col-lg-offset-2 connection">
+            <div class="link">
+                <i class="fa fa-phone margin" aria-hidden="true"></i>
+                <div class="txt">{{ footer.phone }}</div>
+            </div>
+
+            <div class="link">
+                <i class="fa fa-envelope margin" aria-hidden="true"></i>
+                <div class="txt">{{ footer.email }}</div>
+            </div>
+
+            <div class="link">
+                <i class="fa fa-internet-explorer margin" aria-hidden="true"></i>
+                <div class="txt"><a href="{{ footer.site }}" target="_blank">{{ footer.site }}</a></div>
+            </div>
+
+            <div class="link">
+                <i class="fa fa-compass" aria-hidden="true"></i>
+                <div class="txt"><a
+                            href="{{ footer.address_link }}"
+                            target="_blank">{{ footer.address_text }}</a></div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="row copyrights col-lg-10">
+        <div>© HSE 1993–{% now "Y" %}</div>
+        <div>Developed by <a href="http://nwdeer.com" target="_blank">nwdeer</a></div>
+    </div>
+</div>

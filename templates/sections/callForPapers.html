@@ -1,0 +1,37 @@
+<section class="call">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12"><h2>Call for papers</h2></div>
+        </div>
+
+        <div class="row intro-txt">
+            <div class="col-lg-6">
+                <p>
+                    St. Petersburg School of Economics and Management of National Research University
+                    Higher School of Economics (HSE) invites you to submit proposals for mini-tracks and
+                    individual papers for the International Conference "{{ base_info.event_title }}" that will be held in {{ base_info.event_place }} on {{ base_info.event_date }}.
+                </p>
+            </div>
+        </div>
+
+        <div class="row col-lg-6">
+            <div class="call-block position">
+                <div>
+
+                    The scope of the conference encompasses three areas to provide a unique forum for
+                    exploring the development of global business and innovation through the lens of the
+                    BRICS countries:
+
+                    <div class="position-items">
+                        {% for area in areas %}
+                            <div class="position-item">{{ area }}</div>
+                        {% endfor %}
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

@@ -1,0 +1,210 @@
+section.dist
+  background-color: #a8a8a8
+  position: relative
+  padding: 0
+  .heading
+    position: absolute
+    z-index: 1000
+    width: 100%
+    margin: 0 auto
+    top: 0
+    padding-top: 200px
+    h2
+      text-align: center
+      color: white
+  .container-fluid
+    padding-left: 0
+    padding-right: 0
+
+  .dist-block
+    position: relative
+    display: block
+    float: left
+    height: 100%
+    background-size: cover
+    background-position: center center
+    &::after
+      content: ''
+      position: absolute
+      width: 100%
+      height: 100%
+      background-color: black
+      opacity: 0.8
+      top: 0
+      left: 0
+      transition: 0.2s
+    &:hover
+      &::after
+        opacity: 0.9
+    .wrap
+      padding: 300px 0 130px
+      color: white
+      text-align: center
+      z-index: 100
+      position: relative
+    .icon
+      margin: 0 auto 40px
+      height: 110px
+      width: 135px
+      background-size: contain
+      background-position: center center
+      background-repeat: no-repeat
+    .title
+      font-weight: 500
+      font-size: em(20px)
+      margin-bottom: 30px
+    .text
+      padding: 0 20px
+      min-height: 120px
+
+    &.learn
+      background-image: url($thumbs_path + 'dist/learn_bg.jpg')
+      .icon
+        background-image: url($icon_path + 'dist/education.svg')
+
+    &.chat
+      background-image: url($thumbs_path + 'dist/chat_bg.jpg')
+      .icon
+        background-image: url($icon_path + 'dist/dialog.svg')
+
+    &.control
+      background-image: url($thumbs_path + 'dist/control_bg.jpg')
+      .icon
+        background-image: url($icon_path + 'dist/test.svg')
+
+  .corner
+    position: absolute
+    top: -2px
+    z-index: 100
+    width: 100%
+    img
+      width: 100%
+
+section.cta
+  padding: 30px 0
+  background-color: $color-dark-grey
+  color: white
+  .title
+    font-size: em(19px)
+  .more
+    font-size: em(16px)
+    color: $color-light-grey
+
+  button
+    line-height: 32px
+    padding: 5px 60px
+
+
+
+section.sign-now
+  color: white
+  text-align: center
+  background-image: url($thumbs_path + 'sign-now-bg.jpg')
+  background-size: cover
+  background-position: center
+  .sign-offer
+    margin-top: 40px
+    font-size: em(18px)
+
+  table
+    margin-top: 45px
+    border: 1px solid white
+    margin-left: auto
+    margin-right: auto
+    width: 100%
+    th
+      padding: 10px 0
+      background-color: #EC0B43
+      text-transform: uppercase
+    tr, td
+      border: 1px solid white
+    td
+      padding: 15px 15px
+      &.indoor
+        width: 50%
+      .old
+        font-size: em(14px)
+        text-decoration: line-through
+        color: $color-light-grey
+
+  .credit
+    margin-top: 10px
+    font-size: em(16px)
+    text-transform: uppercase
+
+  .form
+    margin-top: 90px
+    form
+      input
+        color: black
+        display: block
+        padding: 7px 15px
+        background-color: white
+        border-radius: 3px
+        border: 1px solid white
+        width: 100%
+        margin: 0 auto
+        margin-bottom: 5px
+        @include placeholder
+          color: $color-light-grey
+        &#button
+          background: none
+          color: white
+          text-transform: uppercase
+          outline: none
+          transition: 0.2s
+          &:hover
+            background-color: $color-blue
+            border-color: $color-blue
+
+
+
+section.feedbacks
+  position: relative
+  padding-bottom: 110px
+  text-align: center
+
+  &::after
+    content: ""
+    position: absolute
+    left: 0
+    top: 0
+    opacity: 0.15
+    width: 100%
+    height: 100%
+    background-image: url($thumbs_path + 'itmo_pattern.svg')
+    background-repeat: repeat
+    background-position: center
+
+  .chevrone
+    position: absolute
+    padding: 60px 0
+    top: 20%
+    font-size: em(30px)
+    color: #acacac
+    z-index: 1000
+    cursor: pointer
+    transition: 0.2s
+    &.left
+      left: 0
+    &.right
+      right: 0
+    &:hover
+      color: $color-blue
+
+
+  .feedback
+    margin-top: 100px
+    .item
+      width: 70%
+      margin: 0 auto
+    .author
+      margin-top: 40px
+      font-weight: 500
+      font-size: em(18px)
+    .work
+      padding-top: 10px
+      font-weight: 300
+      font-size: em(16px)
+
+

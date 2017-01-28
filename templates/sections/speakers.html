@@ -1,0 +1,25 @@
+{% load static %}
+<section class="speakers">
+    <div class="container">
+
+        <div class="row">
+            <h2>Confirmed Keynote Speakers</h2>
+
+            {% for speaker in speakers %}
+            <div class="speakers-item col-md-12">
+                <div class="col-md-3 hidden-xs col-sm-3">
+                    <div class="speaker-photo" style='background-image:url("{{ speaker.photo.url }}")'></div>
+                </div>
+                <div class="col-md-9 col-sm-9 col-xs-12 speaker-info">
+                    <div class="speaker-name"><a href="{{ speaker.url }}" target="_blank">{{ speaker.name }}</a></div>
+                    <div class="speaker-university">{{ speaker.university }}</div>
+                    <div class="speaker-description">{{ speaker.description }}</div>
+                </div>
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+</section>
