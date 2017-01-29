@@ -1,25 +1,24 @@
 <section class="organizers">
-    {% comment %}<div class="container">
+    <div class="container">
         <div class="row">
             <div class="col-lg-12"><h2>Organizers</h2></div>
         </div>
-    </div>{% endcomment %}
+    </div>
 
 
     <div class="mansory-grid">
         <div class="grid-sizer"></div>
 
         {% for person in organizers %}
-            <div class="grid-item">
-                <a href="{{ person.url }}" target="_blank">
+            <a href="{{ person.url }}" target="_blank">
+                <div class="grid-item organizer-item" style="background-image: url('{{ person.photo.url }}')">
                     <div class="grid-item-info">
                         <div class="main">{{ person.name }}</div>
                         <div class="sub">{{ person.university }}</div>
                         <div class="committie">{{ person.get_committie_display }}</div>
                     </div>
-                    <img src="{{ person.photo.url }}"/>
-                </a>
-            </div>
+                </div>
+            </a>
         {% endfor %}
 
     </div>

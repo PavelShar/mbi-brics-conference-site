@@ -100,10 +100,8 @@ class Footer(models.Model):
         return 'Footer'
 
 
-
 @python_2_unicode_compatible
 class Organizers(models.Model):
-
     name = models.CharField('Name', max_length=255)
     university = models.CharField(max_length=255)
     url = models.URLField()
@@ -118,9 +116,38 @@ class Organizers(models.Model):
         return self.name
 
 
-
 @python_2_unicode_compatible
 class SubmissionForm(models.Model):
+    Title = (('','Select an item…'),('other', ''), ('prog', 'Prof'), ('dr', 'Dr'), ('mr', 'Mr'), ('mrs', 'Mrs'), ('ms', 'Ms'))
+    Attendance = (('','Select an item…'),('reporter', 'Reporter'), ('participant', 'Participant, without a report'))
+    YesNo = (('','Select an item…'),('yes', 'Yes'), ('no', 'No'))
+    Areas = [('','Select an item…')] + [(str(c.id), str(c.title)) for c in TopicAreas.objects.all()]
+
+    title = models.CharField(choices=Title, blank=False, max_length=255)
+    first_name = models.CharField(max_length=255, blank=False)
+    middle_name = models.CharField(max_length=255, blank=True)
+    second_name = models.CharField(max_length=255, blank=False)
+    company = models.CharField(max_length=255, blank=False)
+    job_position = models.CharField(max_length=255, blank=False)
+    attendance_status = models.CharField(choices=Attendance, max_length=255, blank=False)
+    abstract_title = models.CharField(max_length=255, blank=True)
+    abstract_text = models.TextField(blank=True, help_text="Not more than 500 words")
+    section_1 = models.CharField(max_length=255, choices = Areas)
+    section_2 = models.CharField(max_length=255, blank=True, choices = Areas)
+    email = models.EmailField(max_length=255, blank=False)
+    telephone = models.CharField(max_length=255, blank=True)
+    date_of_birth = models.CharField(max_length=255, blank=False, help_text="dd/mm/yyyy")
+    citizenship = models.CharField(max_length=255, blank=False)
+    visa = models.CharField('Do you need a visa?', choices=YesNo, max_length=255, blank=False)
+    passport = models.CharField('Passport №', max_length=255, blank=True)
+    issued = models.CharField('Issued on', max_length=255, blank=True)
+    valid = models.CharField('Valid by', max_length=255, blank=True)
+    city = models.CharField(max_length=255, blank=True)
+    postal_address = models.CharField(max_length=255, blank=False)
+    zip = models.CharField('ZIP', max_length=255, blank=True)
+    country = models.CharField(max_length=255, blank=False)
+    hotel = models.CharField('Do you need a hotel?', max_length=255, blank=False, choices=YesNo)
+
     enabled = models.BooleanField('Enabled', default=False)
 
     class Meta:

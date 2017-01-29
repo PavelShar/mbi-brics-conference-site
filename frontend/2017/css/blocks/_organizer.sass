@@ -25,11 +25,12 @@ section.organizers
     bottom: 0
     padding: 20px 35px
     z-index: 1
+    width: 100%
 
     .committie
       padding-top: 10px
       font-size: em(12px)
-      color: #adadad
+      color: #d0d0d0
       line-height: em(20px)
 
     .main
@@ -39,7 +40,11 @@ section.organizers
       font-size: em(14px)
       font-weight: 300
 
-  .grid-item
+  .organizer-item
+    height: 300px
+    background-size: cover
+    background-repeat: no-repeat
+    background-position: center center
 
     &:after
       transition: all .2s ease
@@ -51,5 +56,7 @@ section.organizers
       height: 100%
 
     &:hover
+      .grid-item-info
+        background: rgba(0, 52, 155, 0.45)
       &:after
         background: rgba(0, 0, 0, 0.2)
