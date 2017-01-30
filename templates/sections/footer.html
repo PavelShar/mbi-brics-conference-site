@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-3 credentials">{{ footer.left_text }}</div>
-        <div class="col-lg-4 col-lg-offset-2 connection">
+        <div class="col-lg-5 col-lg-offset-2 connection">
             <div class="link">
                 <i class="fa fa-phone margin" aria-hidden="true"></i>
                 <div class="txt">{{ footer.phone }}</div>
@@ -21,7 +21,7 @@
                 <i class="fa fa-compass" aria-hidden="true"></i>
                 <div class="txt"><a
                             href="{{ footer.address_link }}"
-                            target="_blank">{{ footer.address_text }}</a></div>
+                            target="_blank">{% autoescape off %}{{ footer.address_text }}{% endautoescape %}</a></div>
             </div>
 
         </div>

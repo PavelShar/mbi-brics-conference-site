@@ -3,17 +3,19 @@
 
 /*==========  Desktop First Method  ==========*/
 
-@media only screen and (max-width : 1330px)
+@media only screen and (max-width: 1330px)
   #scroller
     display: none !important
 
-
 /* Large Devices, Wide Screens */
-@media only screen and (max-width : 1200px)
+@media only screen and (max-width: 1200px)
+
+  .nav_row
+    margin: 0 !important
 
   header
     .logo
-      //position: absolute
+      //position: wabsolute
       z-index: 2
     .hamburger
       //position: absolute
@@ -73,19 +75,26 @@
     .copyrights
       padding-top: 30px
 
-/* Medium Devices, Desktops */
-@media only screen and (max-width : 992px)
+  .mansory-grid
+    .grid-sizer,
+    .grid-item
+      width: 20%
 
+/* Medium Devices, Desktops */
+@media only screen and (max-width: 992px)
 
   section.cta
     .title
       font-size: em(18px)
       margin-bottom: 5px
 
-
+  .mansory-grid
+    .grid-sizer,
+    .grid-item
+      width: 20%
 
 /* Small Devices, Tablets */
-@media only screen and (max-width : 768px)
+@media only screen and (max-width: 768px)
 
   header
     .video-wrap
@@ -99,13 +108,10 @@
   h2
     line-height: em(20px)
 
-
   .main_title
     padding-top: 150px !important
     h1
       font-size: em(32px)
-
-
 
   section.dist
     .text
@@ -116,12 +122,16 @@
     .copyrights
       width: 65%
 
+  .mansory-grid
+    .grid-sizer,
+    .grid-item
+      width: 33.33%
 
+  .organizer-item:after
+    background: rgba(0, 0, 0, 0.3)
 
 /* Extra Small Devices, Phones */
-@media only screen and (max-width : 480px)
-
-
+@media only screen and (max-width: 480px)
 
   header
     .logo
@@ -143,8 +153,6 @@
       .icon
         display: none
 
-
-
   section.cv
     .position-item
       margin-top: 3px
@@ -154,13 +162,9 @@
       .benefit-text
         width: 100% !important
 
-
-
-
   section.dist
     .text
       padding: 0 !important
-
 
   section.organizers
     text-align: center !important
@@ -172,12 +176,25 @@
     .copyrights
       width: auto
 
+  .mansory-grid
+    .grid-sizer,
+    .grid-item
+      height: 300px !important
+      width: 100%
 
+    &:after
+      background: rgba(0, 0, 0, 0.3) !important
 
+  section.speakers
+    text-align: center
+    .speakers-item
+      flex-direction: column
+      .speaker-photo
+        margin: 0 auto
 
 
 /* Custom, iPhone Retina */
-@media only screen and (max-width : 320px)
+@media only screen and (max-width: 320px)
 
   header
     .logo
@@ -187,10 +204,25 @@
   .toggle_menu
     margin-top: 9px
 
-
-
   section.feedbacks
     .feedback
       .text
         font-size: em(14px)
+
+  .mansory-grid
+    .grid-sizer,
+    .grid-item
+      height: 300px !important
+      width: 100%
+
+  .organizer-item
+    .committie
+      font-size: em(10px) !important
+      line-height: em(18px) !important
+
+    .main
+      font-size: em(16px) !important
+
+    .sub
+      font-size: em(12px) !important
 
