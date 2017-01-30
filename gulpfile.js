@@ -7,7 +7,7 @@ var gulp = require('gulp'), // Подключаем Gulp
     autoprefixer = require('gulp-autoprefixer');// Подключаем библиотеку для автоматического добавления префиксов
 
 gulp.task('css-2017', function () { // Создаем таск Sass
-    return gulp.src('frontend/2017/css/**/*.sass') // Берем источник
+    return gulp.src(['frontend/2017/css/**/*.sass','frontend/2017/css/**/*.scss']) // Берем источник
         .pipe(sass()) // Преобразуем Sass в CSS посредством gulp-sass
         //.pipe(autoprefixer(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true })) // Создаем префиксы
         .pipe(cleanCSS({compatibility: 'ie8'}))
