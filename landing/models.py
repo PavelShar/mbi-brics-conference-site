@@ -1,7 +1,7 @@
 # coding: utf-8
 from __future__ import unicode_literals
 
-from django import forms
+import datetime
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from multiselectfield import MultiSelectField
@@ -21,6 +21,10 @@ class BaseInfo(models.Model):
     event_date = models.CharField('Date', max_length=255)
     event_place = models.CharField('Place', max_length=255)
     language = models.CharField('Working language', max_length=255)
+    submission_open = models.BooleanField('Open submission', default=True)
+    submission_details =models.TextField('Submission details text', default='')
+    submission_help = models.TextField('Submission help text', default='')
+    works_invitation = models.TextField('Works invitation text', default='')
 
     class Meta:
         verbose_name = 'Base information'
@@ -54,6 +58,18 @@ class Speakers(models.Model):
 
     def __str__(self):
         return self.name + " - " + self.university
+
+
+@python_2_unicode_compatible
+class Publications(models.Model):
+    title = models.CharField('Title', max_length=255)
+    description = models.TextField('Description')
+
+    class Meta:
+        verbose_name_plural = 'Publications'
+
+    def __str__(self):
+        return self.title
 
 
 @python_2_unicode_compatible
@@ -117,28 +133,28 @@ class Organizers(models.Model):
 
 
 @python_2_unicode_compatible
-class SubmissionForm(models.Model):
-    Title = (('','Select an item…'),('other', ''), ('prog', 'Prof'), ('dr', 'Dr'), ('mr', 'Mr'), ('mrs', 'Mrs'), ('ms', 'Ms'))
-    Attendance = (('','Select an item…'),('reporter', 'Reporter'), ('participant', 'Participant, without a report'))
-    YesNo = (('','Select an item…'),('yes', 'Yes'), ('no', 'No'))
-    Areas = [('','Select an item…')] + [(str(c.id), str(c.title)) for c in TopicAreas.objects.all()]
+class Submission(models.Model):
+    Title = (('', ''), ('prog', 'Prof'), ('dr', 'Dr'), ('mr', 'Mr'), ('mrs', 'Mrs'), ('ms', 'Ms'))
+    Attendance = (('',''),('reporter', 'Reporter'), ('participant', 'Participant, without a report'))
+    YesNo = (('',''),('yes', 'Yes'), ('no', 'No'))
+    Areas = [('','')] + [(str(c.id), str(c.title)) for c in TopicAreas.objects.all()]
 
-    title = models.CharField(choices=Title, blank=False, max_length=255)
+    title = models.CharField(choices=Title, blank=False, max_length=255, help_text='Select an item…')
     first_name = models.CharField(max_length=255, blank=False)
     middle_name = models.CharField(max_length=255, blank=True)
     second_name = models.CharField(max_length=255, blank=False)
     company = models.CharField(max_length=255, blank=False)
     job_position = models.CharField(max_length=255, blank=False)
-    attendance_status = models.CharField(choices=Attendance, max_length=255, blank=False)
+    attendance_status = models.CharField(choices=Attendance, max_length=255, blank=False, help_text='Select an item…')
     abstract_title = models.CharField(max_length=255, blank=True)
     abstract_text = models.TextField(blank=True, help_text="Not more than 500 words")
-    section_1 = models.CharField(max_length=255, choices = Areas)
-    section_2 = models.CharField(max_length=255, blank=True, choices = Areas)
+    section_1 = models.CharField(max_length=255, choices = Areas, help_text='Select an item…')
+    section_2 = models.CharField(max_length=255, blank=True, choices = Areas, help_text='Select an item…')
     email = models.EmailField(max_length=255, blank=False)
     telephone = models.CharField(max_length=255, blank=True)
     date_of_birth = models.CharField(max_length=255, blank=False, help_text="dd/mm/yyyy")
     citizenship = models.CharField(max_length=255, blank=False)
-    visa = models.CharField('Do you need a visa?', choices=YesNo, max_length=255, blank=False)
+    visa = models.CharField('Do you need a visa?', choices=YesNo, max_length=255, blank=False ,help_text='Select an item…')
     passport = models.CharField('Passport №', max_length=255, blank=True)
     issued = models.CharField('Issued on', max_length=255, blank=True)
     valid = models.CharField('Valid by', max_length=255, blank=True)
@@ -146,13 +162,12 @@ class SubmissionForm(models.Model):
     postal_address = models.CharField(max_length=255, blank=False)
     zip = models.CharField('ZIP', max_length=255, blank=True)
     country = models.CharField(max_length=255, blank=False)
-    hotel = models.CharField('Do you need a hotel?', max_length=255, blank=False, choices=YesNo)
-
-    enabled = models.BooleanField('Enabled', default=False)
+    hotel = models.CharField('Do you need a hotel?', max_length=255, blank=False, choices=YesNo, help_text='Select an item…')
+    #created_at = models.DateField(blank=True, null=True, default=datetime.date.today)
 
     class Meta:
-        verbose_name = 'Submission Form'
-        verbose_name_plural = 'Submission Form'
+        verbose_name = 'Submission'
+        verbose_name_plural = 'Submissions'
 
     def __str__(self):
         return "Submission form"

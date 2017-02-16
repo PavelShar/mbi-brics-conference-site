@@ -1,0 +1,12 @@
+<section class="publications">
+    {% for publication in publications %}
+        <div class="padding-vertical">
+            <div class="container">
+                <h2>{{ publication.title }}</h2>
+                <div>
+                    {{ publication.description }}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</section>

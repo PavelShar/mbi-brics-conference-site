@@ -1,0 +1,27 @@
+.form-welcome {
+  margin: 50px 0;
+
+  .form-title {
+    font-size: 28px;
+    padding-bottom: 15px;
+  }
+
+  .form-text {
+    font-size: 15px;
+    .required-help {
+      color: darkred;
+    }
+  }
+
+}
+
+form.submission-form{
+
+  .help-block{
+    background: #f7f7f7;
+    font-size: 12px;
+    border-radius: 3px;
+    padding: 10px;
+  }
+}
+

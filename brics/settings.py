@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'landing',
-    'multiselectfield'
+    'multiselectfield',
+    'bootstrapform',
+    'import_export'
 ]
 
 MIDDLEWARE = [

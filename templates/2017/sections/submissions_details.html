@@ -1,0 +1,31 @@
+<section class="submission-details">
+    <div class="container">
+        <div class="row col-lg-12">
+
+            <h2>Submission details</h2>
+            <div class="text">
+
+                {% if base_info.submission_open %}
+                    <div>Submissions of papers must be made through the Conference website.</div>
+                    <div><a href="/brics/submit" target="_blank">
+                        <button>Submit proposal</button>
+                    </a></div>
+                {% endif %}
+
+                <div>{{ base_info.submission_details }}</div>
+                <div class="padding-vertical">Email: <span class="email">{{ footer.email }}</span></div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="welcomed_approaches">
+    <div class="container">
+        <div class="row col-lg-12">
+            <div>
+                {{ base_info.works_invitation }}
+            </div>
+        </div>
+    </div>
+</section>

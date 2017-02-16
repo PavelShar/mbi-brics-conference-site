@@ -11,20 +11,15 @@
 
 	<title>{{ base_info.event_title }}</title>
 	<meta name="description" content='{{ base_info.event_type }} "{{ base_info.event_title }}"'>
-
-	<link rel="shortcut icon" href="{% static "/2017/img/favicon/favicon.ico" %}" type="image/x-icon">
-	<link rel="apple-touch-icon" href="{% static "/2017/img/favicon/apple-touch-icon.png" %}">
-	<link rel="apple-touch-icon" sizes="72x72" href="{% static "/2017/img/favicon/apple-touch-icon-72x72.png" %}">
-	<link rel="apple-touch-icon" sizes="114x114" href="{% static "/2017/img/favicon/apple-touch-icon-114x114.png" %}">
-
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+    {% block css %}{% endblock %}
 	<link rel="stylesheet" href="{% static "/2017/libs/bootstrap/css/bootstrap-grid.min.css" %}">
 	<link rel="stylesheet" href="{% static "/2017/libs/owl-carousel/owl.carousel.css" %}">
 	<link rel="stylesheet" href="{% static "/2017/libs/animate/animate.css" %}">
-	
+
 	<link rel="stylesheet" href="{% static "/2017/css.min/fonts.min.css" %}">
 	<link rel="stylesheet" href="{% static "/2017/css.min/main.min.css" %}">
 	<link rel="stylesheet" href="{% static "/2017/css.min/media.min.css" %}">
@@ -36,18 +31,8 @@
 
 <body>
 
-	{% include "sections/header.html" %}
-    {% include "sections/callForPapers.html" %}
-	{% include "sections/objectives.html" %}
-    {% include "sections/speakers.html" %}
-    {% include "sections/topicareas.html" %}
-	{% include "sections/dates.html" %}
-
-    {% include "sections/submissions_details.html" %}
-    {% include "sections/organizers.html" %}
-
-    {% include "sections/publications.html" %}
-    <footer>{% include "sections/footer.html" %}</footer>
+    {% block body %}{% endblock %}
+    <footer>{% block footer %}{% include "2017/sections/footer.html" %}{% endblock %}</footer>
 
 
 	<div id="scroller" class="hidden-md"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
@@ -67,8 +52,6 @@
 	<script src="{% static "/2017/libs/jquery/jquery-1.11.2.min.js" %}"></script>
 	<script src="{% static "/2017/libs/owl-carousel/owl.carousel.min.js" %}"></script>
 	<script src="{% static "/2017/js/jquery.smooth-scroll.js" %}"></script>
-    <script src="{% static "/2017/libs/imagesloaded/imagesloaded.pkgd.min.js" %}"></script>
-    <script src="{% static "/2017/libs/masonry/masonry.pkgd.min.js" %}"></script>
 	<script src="{% static "/2017/js/common.js" %}"></script>
 
 
