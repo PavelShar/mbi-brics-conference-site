@@ -22,19 +22,18 @@ class BaseInfoAdmin(admin.ModelAdmin):
 
 
 class SubmissionResource(resources.ModelResource):
-    published = fields.Field(column_name='published_date')
     class Meta:
         model = Submission
         exclude = ('id',)
         widgets = {
-            'published': {'format': '%d.%m.%Y'},
+            'created_at': {'format': '%d.%m.%Y'},
         }
 
 class SubmissionAdmin(ImportExportModelAdmin):
     list_display = ('submission_info','title', 'first_name', 'second_name',
                     'company', 'job_position', 'attendance_status',
                     'section_1', 'email', 'telephone')
-    list_filter = ['title', 'attendance_status', 'section_1', 'section_2', 'visa', 'hotel']
+    list_filter = ['title', 'attendance_status', 'section_1', 'section_2', 'get_review', 'accompanying', 'visa', 'hotel']
     search_fields = ['first_name', 'second_name', 'company', 'job_position', 'abstract_title',
                      'abstract_text', 'email', 'telephone', 'citizenship', 'passport', 'city', 'postal_address',
                      'country']

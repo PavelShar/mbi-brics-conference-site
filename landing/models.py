@@ -148,8 +148,9 @@ class Submission(models.Model):
     attendance_status = models.CharField(choices=Attendance, max_length=255, blank=False, help_text='Select an item…')
     abstract_title = models.CharField(max_length=255, blank=True)
     abstract_text = models.TextField(blank=True, help_text="Not more than 500 words")
-    section_1 = models.CharField(max_length=255, choices = Areas, help_text='Select an item…')
-    section_2 = models.CharField(max_length=255, blank=True, choices = Areas, help_text='Select an item…')
+    section_1 = models.CharField(max_length=255, choices = Areas, help_text='Sections your report corresponds to (by priority of compliance)')
+    section_2 = models.CharField(max_length=255, blank=True, choices = Areas, help_text='Sections your report corresponds to (by priority of compliance)')
+    get_review = models.CharField('Would you like to review the Conference papers?', max_length=255, choices=YesNo, blank=True ,help_text='Select an item…')
     email = models.EmailField(max_length=255, blank=False)
     telephone = models.CharField(max_length=255, blank=True)
     date_of_birth = models.CharField(max_length=255, blank=False, help_text="dd/mm/yyyy")
@@ -163,7 +164,8 @@ class Submission(models.Model):
     zip = models.CharField('ZIP', max_length=255, blank=True)
     country = models.CharField(max_length=255, blank=False)
     hotel = models.CharField('Do you need a hotel?', max_length=255, blank=False, choices=YesNo, help_text='Select an item…')
-    #created_at = models.DateField(blank=True, null=True, default=datetime.date.today)
+    accompanying = models.CharField('Will you be accompanying by a person?',max_length=255, blank=False, choices=YesNo, help_text='Select an item…')
+    created_at = models.DateField(blank=True, null=True, default=datetime.date.today)
 
     class Meta:
         verbose_name = 'Submission'
