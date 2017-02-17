@@ -20,7 +20,14 @@
                 <div class="site-menu">
                     <div class="menu-item"><a href="/brics/">Main Page</a></div>
                     {% for menu in menus %}
-                        <div class="menu-item"><a href="/brics/{{ menu.anchor }}">{{ menu.title }}</a></div>
+
+                        {% if menu.anchor == '#news' and news %}
+                            <div class="menu-item"><a href="/brics/{{ menu.anchor }}">{{ menu.title }}</a></div>
+                        {% elif menu.anchor != '#news' %}
+                            <div class="menu-item"><a href="/brics/{{ menu.anchor }}">{{ menu.title }}</a></div>
+                        {% endif %}
+
+
                     {% endfor %}
                 </div>
             </div>
@@ -34,7 +41,7 @@
 
 {% block scripts %}
     {{ block.super }}
-{% comment %}    <!-- Latest compiled and minified JavaScript -->
+    {% comment %}    <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
             integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
             crossorigin="anonymous"></script>{% endcomment %}
