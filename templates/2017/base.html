@@ -3,45 +3,48 @@
 <!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
 <!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en"> <!--<![endif]-->
 
 <head>
 
-	<meta charset="utf-8">
+    <meta charset="utf-8">
 
-	<title>{{ base_info.event_title }}</title>
-	<meta name="description" content='{{ base_info.event_type }} "{{ base_info.event_title }}"'>
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{ base_info.event_title }}</title>
+    <meta name="description" content='{{ base_info.event_type }} "{{ base_info.event_title }}"'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     {% block css %}{% endblock %}
-	<link rel="stylesheet" href="{% static "/2017/libs/bootstrap/css/bootstrap-grid.min.css" %}">
-	<link rel="stylesheet" href="{% static "/2017/libs/owl-carousel/owl.carousel.css" %}">
-	<link rel="stylesheet" href="{% static "/2017/libs/animate/animate.css" %}">
+    <link rel="stylesheet" href="{% static "/2017/libs/bootstrap/css/bootstrap-grid.min.css" %}">
+    <link rel="stylesheet" href="{% static "/2017/libs/owl-carousel/owl.carousel.css" %}">
+    <link rel="stylesheet" href="{% static "/2017/libs/animate/animate.css" %}">
 
-	<link rel="stylesheet" href="{% static "/2017/css.min/fonts.min.css" %}">
-	<link rel="stylesheet" href="{% static "/2017/css.min/main.min.css" %}">
-	<link rel="stylesheet" href="{% static "/2017/css.min/media.min.css" %}">
-	<link rel="stylesheet" href="{% static "/2017/css.min/font-awesome.min.css" %}">
+    <link rel="stylesheet" href="{% static "/2017/css.min/fonts.min.css" %}">
+    <link rel="stylesheet" href="{% static "/2017/css.min/main.min.css" %}">
+    <link rel="stylesheet" href="{% static "/2017/css.min/media.min.css" %}">
+    <link rel="stylesheet" href="{% static "/2017/css.min/font-awesome.min.css" %}">
 
-	<script src="{% static "/2017/libs/modernizr/modernizr.js" %}"></script>
+    <script src="{% static "/2017/libs/modernizr/modernizr.js" %}"></script>
 
 </head>
 
 <body>
 
-    {% block body %}{% endblock %}
-    <footer>{% block footer %}{% include "2017/sections/footer.html" %}{% endblock %}</footer>
+{% block body %}{% endblock %}
+<footer>{% block footer %}{% include "2017/sections/footer.html" %}{% endblock %}</footer>
 
 
-	<div id="scroller" class="hidden-md"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
+<div id="scroller" class="hidden-md"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
 
-	<!--PRELOADER-->
-	<div class="hidden"></div>
-	<div class="loader"><div class="loader_inner"></div></div>
+<!--PRELOADER-->
+<div class="hidden"></div>
+<div class="loader">
+    <div class="loader_inner"></div>
+</div>
 
-	<!--[if lt IE 9]>
+<!--[if lt IE 9]>
 
 	<script src="{% static "/2017/libs/html5shiv/es5-shim.min.js" %}"></script>
 	<script src="{% static "/2017/libs/html5shiv/html5shiv.min.js" %}"></script>
@@ -49,11 +52,12 @@
 	<script src="{% static "/2017/libs/respond/respond.min.js" %}"></script>
 	<![endif]-->
 
-	<script src="{% static "/2017/libs/jquery/jquery-1.11.2.min.js" %}"></script>
-	<script src="{% static "/2017/libs/owl-carousel/owl.carousel.min.js" %}"></script>
-	<script src="{% static "/2017/js/jquery.smooth-scroll.js" %}"></script>
-	<script src="{% static "/2017/js/common.js" %}"></script>
+<script src="{% static "/2017/libs/jquery/jquery-1.11.2.min.js" %}"></script>
+<script src="{% static "/2017/libs/owl-carousel/owl.carousel.min.js" %}"></script>
+<script src="{% static "/2017/js/jquery.smooth-scroll.js" %}"></script>
+<script src="{% static "/2017/js/common.js" %}"></script>
 
+{% block scripts %}{% endblock %}
 
 </body>
 </html>

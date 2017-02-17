@@ -1,0 +1,52 @@
+section.organizers {
+  padding-top: 35px;
+
+  .organizers-title {
+    font-size: 22px;
+    padding: 15px 0;
+    margin-top: 35px;
+  }
+
+  .organizers-group {
+    margin-top: 10px;
+
+    .ogranizer-person {
+      padding: 15px 0;
+
+      .organizer-photo {
+        height: 80px;
+        width: 80px;
+        border-radius: 50%;
+        background-position: center center;
+        background-size: cover;
+        margin: 0 auto;
+      }
+
+      .organizer-person-info {
+        padding-left: 40px;
+        padding-top: 18px;
+
+        a {
+          text-decoration: none;
+          color: black;
+          transition: .2s ease;
+
+          &:hover {
+            color: $color-blue;
+          }
+        }
+
+        .name {
+          font-size: 16px;
+        }
+
+        .university {
+          font-size: 13px;
+          color: #8e8e8e;
+        }
+      }
+
+    }
+  }
+
+}

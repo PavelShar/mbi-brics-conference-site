@@ -16,7 +16,7 @@ gulp.task('css-2017', function () { // Создаем таск Sass
 });
 
 gulp.task('watch', ['css-2017'], function () {
-    gulp.watch('frontend/2017/css/**/*.sass', ['css-2017']); // Наблюдение за sass файлами в папке sass
+    gulp.watch(['frontend/2017/css/**/*.sass', 'frontend/2017/css/**/*.scss'], ['css-2017']); // Наблюдение за sass файлами в папке sass
     gulp.watch(['frontend/2017/libs/**/*.js', 'frontend/2017/js/**/*.js'], ['js-2017']); // Наблюдение за sass файлами в папке sass
 });
 

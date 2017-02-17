@@ -4,12 +4,18 @@
 	{% include "2017/sections/header.html" %}
     {% include "2017/sections/callForPapers.html" %}
 	{% include "2017/sections/objectives.html" %}
+
+    {% if news %}
+        {% include '2017/sections/news.html' %}
+    {% endif %}
+
+
     {% include "2017/sections/speakers.html" %}
     {% include "2017/sections/topicareas.html" %}
 	{% include "2017/sections/dates.html" %}
 
     {% include "2017/sections/submissions_details.html" %}
-    {% comment %}{% include "2017/sections/organizers.html" %}{% endcomment %}
+    {% include "2017/sections/organizers.html" %}
 
     {% include "2017/sections/publications.html" %}
 

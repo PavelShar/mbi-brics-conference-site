@@ -7,18 +7,27 @@
         <div class="row">
             <div class="col-lg-4 col-xs-9 logo">
                 <a href="https://www.hse.ru/en/">
-                    <img class="logo" src="{% static "/2017/img/logos/hse_eng_logo.svg" %}" alt="Higher School of Economics">
+                    <img class="logo" src="{% static "/2017/img/logos/hse_eng_logo.svg" %}"
+                         alt="Higher School of Economics">
                 </a>
             </div>
             <div class="col-lg-8 nav">
                 <nav class="top_menu">
                     <ul>
-                        <li><a href="#" onclick="scrollingTo('section.speakers')">Speakers</a></li>
-                        <li><a href="#" onclick="scrollingTo('section.areas')">Topic Areas</a></li>
-                        <li><a href="#" onclick="scrollingTo('section.submission-details')">Submission details</a></li>
-                        <li><a href="#" onclick="scrollingTo('section.dates')">Dates</a></li>
-                        <li><a href="#" onclick="scrollingTo('section.organizers')">Organizers</a></li>
-                        <li><a href="#" onclick="scrollingTo('footer')">Contacts</a></li>
+                        {% for menu in menus %}
+
+                            {% if menu.anchor == '#news' and news %}
+
+                                    <li><a href="javascript:void(0)"
+                                       onclick="scrollingTo('{{ menu.section }}')">{{ menu.title }}</a></li>
+
+                            {% elif menu.anchor != '#news' %}
+
+                                <li><a href="javascript:void(0)"
+                                       onclick="scrollingTo('{{ menu.section }}')">{{ menu.title }}</a></li>
+
+                            {% endif %}
+                        {% endfor %}
                     </ul>
                 </nav>
             </div>
@@ -38,12 +47,21 @@
                 <h3>{{ base_info.event_date }}<br>{{ base_info.event_place }}</h3>
 
                 <div class="language">
-                    <div class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="510" height="510" viewBox="0 0 510 510"><path d="M255 0C114.75 0 0 114.75 0 255s114.75 255 255 255 255-114.75 255-255S395.25 0 255 0zm175.95 153H357c-7.65-33.15-20.4-61.2-35.7-91.8 45.9 17.85 86.7 48.45 109.65 91.8zM255 51c20.4 30.6 38.25 63.75 48.45 102h-96.9c10.2-35.7 28.05-71.4 48.45-102zM58.65 306c-5.1-15.3-7.65-33.15-7.65-51s2.55-35.7 7.65-51h86.7c-2.55 17.85-2.55 33.15-2.55 51s2.55 33.15 2.55 51h-86.7zm20.4 51H153c7.65 33.15 20.4 61.2 35.7 91.8-45.9-17.85-86.7-48.45-109.65-91.8zM153 153H79.05c25.5-43.35 63.75-73.95 109.65-91.8-15.3 30.6-28.05 58.65-35.7 91.8zm102 306c-20.4-30.6-38.25-63.75-48.45-102h96.9c-10.2 35.7-28.05 71.4-48.45 102zm58.65-153h-117.3c-2.55-17.85-5.1-33.15-5.1-51s2.55-33.15 5.1-51H316.2c2.55 17.85 5.1 33.15 5.1 51s-5.1 33.15-7.65 51zm7.65 142.8c15.3-28.05 28.05-58.65 35.7-91.8h73.95C408 400.35 367.2 430.95 321.3 448.8zM367.2 306c2.55-17.85 2.55-33.15 2.55-51s-2.55-33.15-2.55-51h86.7c5.1 15.3 7.65 33.15 7.65 51s-2.55 35.7-7.65 51h-86.7z"/></svg></div>
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="510" height="510" viewBox="0 0 510 510">
+                            <path d="M255 0C114.75 0 0 114.75 0 255s114.75 255 255 255 255-114.75 255-255S395.25 0 255 0zm175.95 153H357c-7.65-33.15-20.4-61.2-35.7-91.8 45.9 17.85 86.7 48.45 109.65 91.8zM255 51c20.4 30.6 38.25 63.75 48.45 102h-96.9c10.2-35.7 28.05-71.4 48.45-102zM58.65 306c-5.1-15.3-7.65-33.15-7.65-51s2.55-35.7 7.65-51h86.7c-2.55 17.85-2.55 33.15-2.55 51s2.55 33.15 2.55 51h-86.7zm20.4 51H153c7.65 33.15 20.4 61.2 35.7 91.8-45.9-17.85-86.7-48.45-109.65-91.8zM153 153H79.05c25.5-43.35 63.75-73.95 109.65-91.8-15.3 30.6-28.05 58.65-35.7 91.8zm102 306c-20.4-30.6-38.25-63.75-48.45-102h96.9c-10.2 35.7-28.05 71.4-48.45 102zm58.65-153h-117.3c-2.55-17.85-5.1-33.15-5.1-51s2.55-33.15 5.1-51H316.2c2.55 17.85 5.1 33.15 5.1 51s-5.1 33.15-7.65 51zm7.65 142.8c15.3-28.05 28.05-58.65 35.7-91.8h73.95C408 400.35 367.2 430.95 321.3 448.8zM367.2 306c2.55-17.85 2.55-33.15 2.55-51s-2.55-33.15-2.55-51h86.7c5.1 15.3 7.65 33.15 7.65 51s-2.55 35.7-7.65 51h-86.7z"/>
+                        </svg>
+                    </div>
                     <div class="info">Working language: {{ base_info.language }}</div>
                 </div>
 
-                {#<button class="red-fill" onclick="scrollingTo('section.sign-now')">Submit proposal</button>#}
-                <button class="white icon" onclick="scrollingTo('section.call')">More <i class="fa fa-chevron-down" aria-hidden="true"></i></button>
+                {% if base_info.submission_open %}
+                    <button class="red-fill" onclick="scrollingTo('section.submission-details')">Submit proposal
+                    </button>
+                {% endif %}
+                <button class="white icon" onclick="scrollingTo('section.call')">More <i class="fa fa-chevron-down"
+                                                                                         aria-hidden="true"></i>
+                </button>
             </div>
         </div>
 

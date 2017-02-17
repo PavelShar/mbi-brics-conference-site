@@ -9,9 +9,25 @@ from multiselectfield import MultiSelectField
 from .helpers import *
 
 ORGANIZERS_CHOICES = (
-    ('org', 'Organising Committie'),
-    ('prog', 'Programme Committie'),
+    ('org', 'Organising Committee'),
+    ('prog', 'Programme Committee'),
 )
+
+@python_2_unicode_compatible
+class Menu(models.Model):
+    title = models.CharField(max_length=255)
+    section = models.CharField(max_length=255)
+    anchor = models.CharField(max_length=255)
+    order = models.PositiveIntegerField(default=0, blank=False, null=False)
+
+    class Meta:
+        verbose_name = 'Main Menu'
+        verbose_name_plural = 'Main Menu'
+        ordering = ('order',)
+
+    def __str__(self):
+        return self.title
+
 
 
 @python_2_unicode_compatible
@@ -37,9 +53,11 @@ class BaseInfo(models.Model):
 @python_2_unicode_compatible
 class Areas(models.Model):
     area_title = models.CharField('Area title', max_length=255)
+    order = models.PositiveIntegerField(default=0, blank=False, null=False)
 
     class Meta:
         verbose_name_plural = 'Areas'
+        ordering = ('order',)
 
     def __str__(self):
         return self.area_title
@@ -52,9 +70,11 @@ class Speakers(models.Model):
     description = models.TextField('Description')
     url = models.URLField('Link')
     photo = models.ImageField('Photo', upload_to=RandomFileName('speakers'))
+    order = models.PositiveIntegerField(default=0, blank=False, null=False)
 
     class Meta:
         verbose_name_plural = 'Speakers'
+        ordering = ('order',)
 
     def __str__(self):
         return self.name + " - " + self.university
@@ -79,6 +99,7 @@ class TopicAreas(models.Model):
     class Meta:
         verbose_name = 'Topic Area'
         verbose_name_plural = 'Topic Areas'
+        ordering = ('pk',)
 
     def __str__(self):
         return self.title
@@ -95,6 +116,7 @@ class ImportantDates(models.Model):
     class Meta:
         verbose_name = 'Important Date'
         verbose_name_plural = 'Important Dates'
+        ordering = ('pk',)
 
     def __str__(self):
         return self.title
@@ -122,11 +144,12 @@ class Organizers(models.Model):
     university = models.CharField(max_length=255)
     url = models.URLField()
     photo = models.ImageField(upload_to=RandomFileName('ogranizers'))
-    committie = MultiSelectField(choices=ORGANIZERS_CHOICES, blank=True)
+    committee = MultiSelectField(choices=ORGANIZERS_CHOICES, blank=True)
 
     class Meta:
         verbose_name_plural = 'Organizers'
         verbose_name = 'Organizers'
+        ordering = ('pk',)
 
     def __str__(self):
         return self.name
@@ -173,3 +196,19 @@ class Submission(models.Model):
 
     def __str__(self):
         return "Submission form"
+
+
+
+@python_2_unicode_compatible
+class News(models.Model):
+    title = models.CharField(max_length=255, blank=False, default='')
+    text = models.TextField(blank=False)
+    date = models.DateField(blank=False, default=datetime.date.today)
+    published = models.BooleanField(blank=False, default=True)
+
+    class Meta:
+        verbose_name = 'News List'
+        verbose_name_plural = 'News List'
+
+    def __str__(self):
+        return self.title

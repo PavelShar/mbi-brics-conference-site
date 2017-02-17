@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'landing',
     'multiselectfield',
     'bootstrapform',
-    'import_export'
+    'import_export',
+    'adminsortable2',
 ]
 
 MIDDLEWARE = [

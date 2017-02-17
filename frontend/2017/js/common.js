@@ -37,24 +37,6 @@ $(document).ready(function () {
     });
 
 
-    var owl = $('.feedback');
-    owl.owlCarousel({
-        items: 1,
-        center: true,
-        loop: true,
-        autoplay: true,
-        autoplayTimeout: 15000,
-        autoplayHoverPause: true
-    });
-
-    $('section.feedbacks .chevrone.right').click(function () {
-        owl.trigger('next.owl.carousel');
-    });
-    $('section.feedbacks .chevrone.left').click(function () {
-        owl.trigger('prev.owl.carousel');
-    });
-
-
     $(window).scroll(function () {
         if ($(this).scrollTop() > 600) {
             $('#scroller').fadeIn();
@@ -68,10 +50,18 @@ $(document).ready(function () {
         }, 400);
         return false;
     });
-    
+
+    scrollByHrefAnchor();
+
 });
 
 
+function scrollByHrefAnchor() {
+    if (window.location.hash.length > 0 && $(window.location.hash).length > 0) {
+        $('html,body').animate({
+            scrollTop: $(window.location.hash).offset().top
+        });
+    }
 
-
+}
 

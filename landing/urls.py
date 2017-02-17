@@ -7,4 +7,5 @@ urlpatterns = [
     url(r'^2017/$', views.index, name='index'),
     url(r'^brics/$', views.index, name='index'),
     url(r'^brics/submit/$', views.submission_form, name='submission_form'),
+    url(r'^brics/submit/success/$', views.submission_success, name='submission_success'),
 ]

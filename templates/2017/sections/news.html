@@ -1,0 +1,22 @@
+<section class="news" id="news">
+    <div class="container">
+
+        <h2>Latest News</h2>
+
+
+        {% for new in news %}
+            <div class="row">
+                <div class="news-container col-lg-12">
+
+                    <div class="title">{{ new.title }}</div>
+                    <div class="text">{{ new.text }}</div>
+                    <div class="date">{{ new.date }}</div>
+
+                </div>
+            </div>
+
+        {% endfor %}
+
+
+    </div>
+</section>

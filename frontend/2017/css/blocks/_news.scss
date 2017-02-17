@@ -1,0 +1,29 @@
+section#news {
+  background: #f7f7f7;
+  .news-container {
+    margin: 25px 0;
+    cursor: default !important;
+
+    .title {
+      font-size: 18px;
+      padding-bottom: 5px;
+    }
+
+    .text {
+      font-size: 14px;
+      margin-bottom: 5px;
+      color: #8e8e8e;
+    }
+
+    .date {
+      padding: 1px 10px;
+      border: 1px solid #d0d0d0;
+      display: inline-block;
+      color: #8e8e8e;
+      border-radius: 3px;
+      font-size: 13px;
+    }
+
+  }
+
+}
