@@ -160,7 +160,7 @@ class Submission(models.Model):
     Title = (('', ''), ('prog', 'Prof'), ('dr', 'Dr'), ('mr', 'Mr'), ('mrs', 'Mrs'), ('ms', 'Ms'))
     Attendance = (('',''),('reporter', 'Reporter'), ('participant', 'Participant, without a report'))
     YesNo = (('',''),('yes', 'Yes'), ('no', 'No'))
-    Areas = [('','')] #+ [(str(c.id), str(c.title)) for c in TopicAreas.objects.all()]
+    Areas = [('','')] + [(str(c.id), str(c.title)) for c in TopicAreas.objects.all()]
 
     title = models.CharField(choices=Title, blank=False, max_length=255, help_text='Select an item…')
     first_name = models.CharField(max_length=255, blank=False)
