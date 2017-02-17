@@ -111,6 +111,7 @@ jspm_packages
 *.pyc
 __pycache__/
 local_settings.py
-#!files/media
+files/media
+db.sqlite3
 
 # End of https://www.gitignore.io/api/pycharm,node,django
