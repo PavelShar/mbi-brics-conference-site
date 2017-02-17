@@ -37,7 +37,7 @@ class BaseInfo(models.Model):
     event_date = models.CharField('Date', max_length=255)
     event_place = models.CharField('Place', max_length=255)
     language = models.CharField('Working language', max_length=255)
-    submission_open = models.BooleanField('Open submission', default=True)
+    submission_open = models.BooleanField('Open submission', default=True, blank=True)
     submission_details =models.TextField('Submission details text', default='')
     submission_help = models.TextField('Submission help text', default='')
     works_invitation = models.TextField('Works invitation text', default='')
