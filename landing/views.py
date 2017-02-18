@@ -5,7 +5,6 @@ from django.urls import reverse
 
 from landing.models import *
 from .forms import SubmissionForm
-from django.contrib import messages
 
 
 def index(request):
@@ -22,7 +21,7 @@ def index(request):
         'org_com': Organizers.objects.filter(Q(committee__contains='org')),
         'publications' : Publications.objects.all()
     }
-    return render(request, '2017/index.html', context)
+    return render(request, '2017/pages/landing/index.html', context)
 
 
 def submission_form(request):
@@ -40,7 +39,7 @@ def submission_form(request):
             form.save()
             return HttpResponseRedirect(reverse('submission_success'))
 
-    return render(request, '2017/submission/form.html', context)
+    return render(request, '2017/pages/submission/form.html', context)
 
 
 
@@ -51,4 +50,16 @@ def submission_success(request):
         'footer': Footer.objects.first(),
     }
 
-    return render(request, '2017/submission/thanks.html', context)
+    return render(request, '2017/pages/submission/thanks.html', context)
+
+
+
+def visa_steps(request):
+    context = {
+        'base_info': BaseInfo.objects.first(),
+        'menus': Menu.objects.all(),
+        'footer': Footer.objects.first(),
+        'visa_steps' : VisaSteps.objects.all()
+    }
+
+    return render(request, '2017/pages/visa/visa.html', context)

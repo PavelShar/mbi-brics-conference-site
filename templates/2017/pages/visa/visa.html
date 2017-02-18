@@ -1,0 +1,75 @@
+{% extends '2017/components/custom_page.html' %}
+{% block page-content %}
+
+
+    <div class="container visa-welcome">
+        <div class="row col-lg-9 col-lg-offset-2 col-sm-offset-2">
+            <h2>{{ base_info.visa_header }}</h2>
+
+            <div class="visa-welcome-block">
+                <div>{{ base_info.visa_main_text }}</div>
+                <div class="visa-btn-after-block">
+                    {% if base_info.visa_find_nearest_link %}
+                        <a href="{{ base_info.visa_find_nearest_link }}" target="_blank">
+                            <button>Find your nearest Russian Embassy or Consulate</button>
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="visa-welcome-block">
+                <div>Not all foreign nationals will require a visa to enter Russia.</div>
+                <div>Please be aware that in such cases where there is no requirement for a visa to enter the country,
+                    there may nevertheless be restrictions on the duration of your stay. You are advised to contact your
+                    nearest Russian Embassy or Consulate in order to ascertain the exact requirements for your
+                    particular situation.
+                </div>
+                <div class="visa-btn-after-block">
+                    {% if base_info.no_visa_requirement_link %}
+                        <a href="{{ base_info.no_visa_requirement_link }}" target="_blank">
+                            <button>No visa requirement list</button>
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="container visa-steps">
+        <div class="row col-lg-9 col-lg-offset-2 col-sm-offset-2">
+            <h2>Visa Process</h2>
+            <div class="subtitle">Below are the key steps involved in the visa process along with some important
+                information relating to your stay in Russia
+            </div>
+
+
+            {% for step in visa_steps %}
+                <div class="step-container col-lg-12 row">
+                    <div class="step col-lg-2 col-md-2 col-sm-3 col-xs-12">
+                        <div class="step-num">{{ step.step_num }}</div>
+                        <div class="step-title">{{ step.title }}</div>
+                    </div>
+
+                    <div class="step-info col-lg-10 col-md-10 col-sm-9 col-xs-12">
+                        {% for step_block in step.visa_step_block.all %}
+                            <div class="visa-step-block">
+                                <div class="title">{{ step_block.title }}</div>
+                                <div class="text">{{ step_block.text|linebreaks }}</div>
+                                {% if step_block.important %}
+                                    <div class="important">{{ step_block.important }}</div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+
+{% endblock %}

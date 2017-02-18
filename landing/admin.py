@@ -75,3 +75,13 @@ class NewsAdmin(admin.ModelAdmin):
     search_fields = ['title', 'text']
 
 admin.site.register(News, NewsAdmin)
+
+
+class VisaStepsBlockAdminInline(admin.TabularInline):
+    model = VisaStepsBlock
+    extra = 1
+
+class VisaStepsAdmin(SortableAdminMixin, admin.ModelAdmin):
+    inlines = (VisaStepsBlockAdminInline, )
+
+admin.site.register(VisaSteps, VisaStepsAdmin)

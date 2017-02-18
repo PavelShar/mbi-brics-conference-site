@@ -1,0 +1,16 @@
+{% extends '2017/base.html' %}
+{% block body %}
+
+    {% include "2017/pages/landing/sections/header.html" %}
+    {% include "2017/pages/landing/sections/callForPapers.html" %}
+    {% include "2017/pages/landing/sections/objectives.html" %}
+    {% if news %} {% include '2017/pages/landing/sections/news.html' %} {% endif %}
+    {% include "2017/pages/landing/sections/speakers.html" %}
+    {% include "2017/pages/landing/sections/topicareas.html" %}
+    {% include "2017/pages/landing/sections/dates.html" %}
+    {% include "2017/pages/landing/sections/submissions_details.html" %}
+    {% include "2017/pages/landing/sections/visa.html" %}
+    {% include "2017/pages/landing/sections/organizers.html" %}
+    {% include "2017/pages/landing/sections/publications.html" %}
+
+{% endblock %}

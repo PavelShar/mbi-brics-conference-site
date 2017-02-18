@@ -28,20 +28,37 @@ class Menu(models.Model):
     def __str__(self):
         return self.title
 
-# @python_2_unicode_compatible
-# class Visa(models.Model):
-#     title = models.CharField(max_length=255)
-#     section = models.CharField(max_length=255)
-#     anchor = models.CharField(max_length=255)
-#     order = models.PositiveIntegerField(default=0, blank=False, null=False)
-#
-#     class Meta:
-#         verbose_name = 'Main Menu'
-#         verbose_name_plural = 'Main Menu'
-#         ordering = ('order',)
-#
-#     def __str__(self):
-#         return self.title
+@python_2_unicode_compatible
+class VisaSteps(models.Model):
+    step_num = models.IntegerField('Step number')
+    title = models.CharField(max_length=255)
+    order = models.PositiveIntegerField(default=0, blank=False, null=False)
+
+    class Meta:
+        verbose_name = 'Visa Step'
+        verbose_name_plural = 'Visa Steps'
+        ordering = ('order',)
+
+    def __str__(self):
+        return self.title
+
+
+
+@python_2_unicode_compatible
+class VisaStepsBlock(models.Model):
+    title = models.CharField(max_length=255, blank=True)
+    text = models.TextField(blank=True)
+    important = models.TextField(blank=True)
+    visa_step = models.ForeignKey(VisaSteps, on_delete=models.CASCADE, related_name='visa_step_block')
+    order = models.PositiveIntegerField(default=0, blank=False, null=False)
+
+    class Meta:
+        verbose_name = 'Visa Step Block'
+        verbose_name_plural = 'Visa Step Block'
+        ordering = ('order',)
+
+    def __str__(self):
+        return self.title
 
 
 @python_2_unicode_compatible
