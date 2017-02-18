@@ -50,12 +50,12 @@ class VisaStepsBlock(models.Model):
     text = models.TextField(blank=True)
     important = models.TextField(blank=True)
     visa_step = models.ForeignKey(VisaSteps, on_delete=models.CASCADE, related_name='visa_step_block')
-    order = models.PositiveIntegerField(default=0, blank=False, null=False)
+
 
     class Meta:
         verbose_name = 'Visa Step Block'
         verbose_name_plural = 'Visa Step Block'
-        ordering = ('order',)
+        ordering = ('pk',)
 
     def __str__(self):
         return self.title

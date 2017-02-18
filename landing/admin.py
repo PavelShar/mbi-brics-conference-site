@@ -77,7 +77,7 @@ class NewsAdmin(admin.ModelAdmin):
 admin.site.register(News, NewsAdmin)
 
 
-class VisaStepsBlockAdminInline(admin.TabularInline):
+class VisaStepsBlockAdminInline(admin.StackedInline):
     model = VisaStepsBlock
     extra = 1
 
