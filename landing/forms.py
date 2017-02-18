@@ -4,7 +4,7 @@ from models import Submission
 
 
 class SubmissionForm(forms.ModelForm):
-    captcha = ReCaptchaField(attrs={
+    captcha = ReCaptchaField(label='',attrs={
         'theme': 'clean',
         'callback' : 'verifyCallback'
     })
