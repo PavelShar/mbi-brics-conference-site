@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'bootstrapform',
     'import_export',
     'adminsortable2',
+    'captcha'
 ]
 
 MIDDLEWARE = [
@@ -127,3 +128,8 @@ STATIC_ROOT = BASE_DIR + '/files/static/'
 
 MEDIA_ROOT = BASE_DIR + '/files/media/'
 MEDIA_URL = '/media/'  #put whatever you want that when url is rendered it will be /media/imagename.jpg
+
+
+NOCAPTCHA = True
+RECAPTCHA_PUBLIC_KEY = '6LemBBYUAAAAAIT4ZfsyYnurCYNrQ8V0e3jfYCc_'
+RECAPTCHA_PRIVATE_KEY = '6LemBBYUAAAAADt-eL_n1s-ARUGsNnS3NEyhqcdY'
