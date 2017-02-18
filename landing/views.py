@@ -33,14 +33,17 @@ def submission_form(request):
         'form': SubmissionForm()
     }
 
-    if request.method == 'POST':
-        form = SubmissionForm(request.POST or None)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect(reverse('submission_success'))
+    baseInfo = BaseInfo.objects.values('submission_open').first()
+    if baseInfo['submission_open'] == True:
+        if request.method == 'POST':
+            form = SubmissionForm(request.POST or None)
+            if form.is_valid():
+                form.save()
+                return HttpResponseRedirect(reverse('submission_success'))
 
-    return render(request, '2017/pages/submission/form.html', context)
-
+        return render(request, '2017/pages/submission/form.html', context)
+    else:
+        return render(request, '2017/pages/submission/closed.html', context)
 
 
 def submission_success(request):
