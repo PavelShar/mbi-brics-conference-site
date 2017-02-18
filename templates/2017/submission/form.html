@@ -37,7 +37,7 @@
             <div class="padding-vertical border-top">
                 <div class="form-group">
                     <div class="col-sm-10 col-sm-offset-2">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary" id="submit-btn">Submit</button>
                     </div>
                 </div>
             </div>
@@ -52,9 +52,14 @@
     {{ block.super }}
 
     <script>
+        document.getElementById("submit-btn").disabled = true;
         $('[required]').each(function () {
             $(this).parent().parent().find('label').addClass('required-field');
         });
+
+        function verifyCallback (){
+            document.getElementById("submit-btn").disabled = false;
+        }
     </script>
 
 {% endblock %}
