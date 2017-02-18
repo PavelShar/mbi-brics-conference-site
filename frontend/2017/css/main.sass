@@ -87,6 +87,7 @@ button
 	border-radius: 3px
 	transition: 0.2s
 	outline: none
+	margin: 3px 1px
 	&.red-fill
 		background-color: $color-red
 		border-color: $color-red
@@ -110,6 +111,9 @@ button
 			margin-left: 5px
 			font-size: em(14px)
 
+	&.fill-hover:hover
+		color: white
+		background-color: $color-blue
 
 section
 	padding: 70px 0
@@ -155,6 +159,7 @@ section
 @import "blocks/areas"
 @import "blocks/subm_details"
 @import "blocks/organizer"
+@import "blocks/visa"
 @import "blocks/footer"
 @import "blocks/submission_form"
 

@@ -28,6 +28,20 @@ class Menu(models.Model):
     def __str__(self):
         return self.title
 
+# @python_2_unicode_compatible
+# class Visa(models.Model):
+#     title = models.CharField(max_length=255)
+#     section = models.CharField(max_length=255)
+#     anchor = models.CharField(max_length=255)
+#     order = models.PositiveIntegerField(default=0, blank=False, null=False)
+#
+#     class Meta:
+#         verbose_name = 'Main Menu'
+#         verbose_name_plural = 'Main Menu'
+#         ordering = ('order',)
+#
+#     def __str__(self):
+#         return self.title
 
 
 @python_2_unicode_compatible
@@ -41,6 +55,10 @@ class BaseInfo(models.Model):
     submission_details =models.TextField('Submission details text', default='')
     submission_help = models.TextField('Submission help text', default='')
     works_invitation = models.TextField('Works invitation text', default='')
+    visa_header = models.CharField('Visa Header', max_length=255, default='Visa Requirements')
+    visa_main_text = models.TextField('Visa Main Text', default='')
+    visa_find_nearest_link = models.URLField(blank=True)
+    no_visa_requirement_link = models.URLField(blank=True)
 
     class Meta:
         verbose_name = 'Base information'

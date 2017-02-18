@@ -1,55 +1,63 @@
 <section class="organizers" id="organizers">
 
     <div class="container">
+        <div class="row col-lg-12">
+            <div class="col-lg-6 col-sm-6 col-xs-12">
+                <h2>
+                    <div class="organizers-title">Programme Committee</div>
+                </h2>
+                <div class="organizers-group">
 
-        <div class="col-lg-6 col-sm-6 col-xs-12">
-            <div class="organizers-title">Programme Committee</div>
-            <div class="organizers-group">
-
-                {% for org in prog_com %}
-                    <div class="row">
-                        <div class="ogranizer-person col-lg-12">
-                            <div class="organizer-person-photo col-sm-2 col-xs-12">
-                                <div class="organizer-photo" style="background-image: url('{{ org.photo.url }}')"></div>
-                            </div>
-                            <div class="organizer-person-info col-sm-10 col-xs-12">
-                                <a href="{{ org.url }}" target="_blank">
-                                    <div class="name">{{ org.name }}</div>
-                                </a>
-                                <div class="university">{{ org.university }}</div>
+                    {% for org in prog_com %}
+                        <div class="row">
+                            <div class="ogranizer-person col-lg-12">
+                                <div class="organizer-person-photo col-sm-2 col-xs-12">
+                                    <div class="organizer-photo"
+                                         style="background-image: url('{{ org.photo.url }}')"></div>
+                                </div>
+                                <div class="organizer-person-info col-sm-10 col-xs-12">
+                                    <a href="{{ org.url }}" target="_blank">
+                                        <div class="name">{{ org.name }}</div>
+                                    </a>
+                                    <div class="university">{{ org.university }}</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                {% endfor %}
+                    {% endfor %}
 
+                </div>
+            </div>
+
+
+            <div class="col-lg-6 col-sm-6 col-xs-12">
+                <h2>
+                    <div class="organizers-title">Organising Committee</div>
+                </h2>
+                <div class="organizers-group">
+
+                    {% for org in org_com %}
+                        <div class="row">
+                            <div class="ogranizer-person col-lg-12">
+                                <div class="organizer-person-photo col-sm-2 col-xs-12">
+                                    <div class="organizer-photo"
+                                         style="background-image: url('{{ org.photo.url }}')"></div>
+                                </div>
+                                <div class="organizer-person-info col-sm-10 col-xs-12">
+                                    <a href="{{ org.url }}" target="_blank">
+                                        <div class="name">{{ org.name }}</div>
+                                    </a>
+                                    <div class="university">{{ org.university }}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    {% endfor %}
+
+                </div>
             </div>
         </div>
 
-
-        <div class="col-lg-6 col-sm-6 col-xs-12">
-            <div class="organizers-title">Organising Committee</div>
-            <div class="organizers-group">
-
-                {% for org in org_com %}
-                    <div class="row">
-                        <div class="ogranizer-person col-lg-12">
-                            <div class="organizer-person-photo col-sm-2 col-xs-12">
-                                <div class="organizer-photo" style="background-image: url('{{ org.photo.url }}')"></div>
-                            </div>
-                            <div class="organizer-person-info col-sm-10 col-xs-12">
-                                <a href="{{ org.url }}" target="_blank">
-                                    <div class="name">{{ org.name }}</div>
-                                </a>
-                                <div class="university">{{ org.university }}</div>
-                            </div>
-                        </div>
-                    </div>
-
-                {% endfor %}
-
-            </div>
-        </div>
 
     </div>
 

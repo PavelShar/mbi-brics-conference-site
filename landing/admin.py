@@ -33,7 +33,8 @@ class BaseInfoAdmin(admin.ModelAdmin):
     fieldsets = [
         (None, {'fields': ['event_type', 'event_title', 'event_date', 'event_place', 'language']}),
         ('Submission', {'fields': ['submission_open', 'submission_details', 'submission_help']}),
-        ('Works invitation', {'fields': ['works_invitation']})
+        ('Works invitation', {'fields': ['works_invitation']}),
+        ('Visa', {'fields': ['visa_header', 'visa_main_text', 'visa_find_nearest_link', 'no_visa_requirement_link']})
     ]
 
 
