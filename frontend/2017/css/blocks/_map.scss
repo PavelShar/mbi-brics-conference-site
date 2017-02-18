@@ -1,0 +1,29 @@
+section#map {
+  padding: 0;
+
+  #map-container {
+    height: 300px;
+  }
+
+  .map-info {
+    background: $color-blue;
+    color: white;
+    padding: 30px;
+    .title {
+      font-size: 20px;
+      padding-bottom: 5px;
+    }
+
+    .info {
+      font-size: 14px;
+    }
+
+    .icon svg {
+      height: 100%;
+      width: 100%;
+      fill: white;
+    }
+  }
+
+}
+

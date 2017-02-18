@@ -13,6 +13,7 @@ ORGANIZERS_CHOICES = (
     ('prog', 'Programme Committee'),
 )
 
+
 @python_2_unicode_compatible
 class Menu(models.Model):
     title = models.CharField(max_length=255)
@@ -27,6 +28,7 @@ class Menu(models.Model):
 
     def __str__(self):
         return self.title
+
 
 @python_2_unicode_compatible
 class VisaSteps(models.Model):
@@ -43,14 +45,12 @@ class VisaSteps(models.Model):
         return self.title
 
 
-
 @python_2_unicode_compatible
 class VisaStepsBlock(models.Model):
     title = models.CharField(max_length=255, blank=True)
     text = models.TextField(blank=True)
     important = models.TextField(blank=True)
     visa_step = models.ForeignKey(VisaSteps, on_delete=models.CASCADE, related_name='visa_step_block')
-
 
     class Meta:
         verbose_name = 'Visa Step Block'
@@ -67,15 +67,18 @@ class BaseInfo(models.Model):
     event_title = models.CharField('Title', max_length=255)
     event_date = models.CharField('Date', max_length=255)
     event_place = models.CharField('Place', max_length=255)
+    background_image = models.ImageField('Photo', upload_to=RandomFileName('main'), default='')
     language = models.CharField('Working language', max_length=255)
     submission_open = models.BooleanField('Open submission', default=True, blank=True)
-    submission_details =models.TextField('Submission details text', default='')
+    submission_details = models.TextField('Submission details text', default='')
     submission_help = models.TextField('Submission help text', default='')
     works_invitation = models.TextField('Works invitation text', default='')
     visa_header = models.CharField('Visa Header', max_length=255, default='Visa Requirements')
     visa_main_text = models.TextField('Visa Main Text', default='')
     visa_find_nearest_link = models.URLField(blank=True)
     no_visa_requirement_link = models.URLField(blank=True)
+    practical_header = models.CharField('Practical Info Header', max_length=255, default='BRICS Practical Information')
+    practical_main_text = models.TextField('Practical Info Main Text', default='')
 
     class Meta:
         verbose_name = 'Base information'
@@ -193,9 +196,9 @@ class Organizers(models.Model):
 @python_2_unicode_compatible
 class Submission(models.Model):
     Title = (('', ''), ('prog', 'Prof'), ('dr', 'Dr'), ('mr', 'Mr'), ('mrs', 'Mrs'), ('ms', 'Ms'))
-    Attendance = (('',''),('reporter', 'Reporter'), ('participant', 'Participant, without a report'))
-    YesNo = (('',''),('yes', 'Yes'), ('no', 'No'))
-    Areas = [('','')] + [(str(c.id), str(c.title)) for c in TopicAreas.objects.all()]
+    Attendance = (('', ''), ('reporter', 'Reporter'), ('participant', 'Participant, without a report'))
+    YesNo = (('', ''), ('yes', 'Yes'), ('no', 'No'))
+    Areas = [('', '')] + [(str(c.id), str(c.title)) for c in TopicAreas.objects.all()]
 
     title = models.CharField(choices=Title, blank=False, max_length=255, help_text='Select an item…')
     first_name = models.CharField(max_length=255, blank=False)
@@ -206,14 +209,18 @@ class Submission(models.Model):
     attendance_status = models.CharField(choices=Attendance, max_length=255, blank=False, help_text='Select an item…')
     abstract_title = models.CharField(max_length=255, blank=True)
     abstract_text = models.TextField(blank=True, help_text="Not more than 500 words")
-    section_1 = models.CharField(max_length=255, choices = Areas, help_text='Sections your report corresponds to (by priority of compliance)')
-    section_2 = models.CharField(max_length=255, blank=True, choices = Areas, help_text='Sections your report corresponds to (by priority of compliance)')
-    get_review = models.CharField('Would you like to review the Conference papers?', max_length=255, choices=YesNo, blank=True ,help_text='Select an item…')
+    section_1 = models.CharField(max_length=255, choices=Areas,
+                                 help_text='Sections your report corresponds to (by priority of compliance)')
+    section_2 = models.CharField(max_length=255, blank=True, choices=Areas,
+                                 help_text='Sections your report corresponds to (by priority of compliance)')
+    get_review = models.CharField('Would you like to review the Conference papers?', max_length=255, choices=YesNo,
+                                  blank=True, help_text='Select an item…')
     email = models.EmailField(max_length=255, blank=False)
     telephone = models.CharField(max_length=255, blank=True)
     date_of_birth = models.CharField(max_length=255, blank=False, help_text="dd/mm/yyyy")
     citizenship = models.CharField(max_length=255, blank=False)
-    visa = models.CharField('Do you need a visa?', choices=YesNo, max_length=255, blank=False ,help_text='Select an item…')
+    visa = models.CharField('Do you need a visa?', choices=YesNo, max_length=255, blank=False,
+                            help_text='Select an item…')
     passport = models.CharField('Passport №', max_length=255, blank=True)
     issued = models.CharField('Issued on', max_length=255, blank=True)
     valid = models.CharField('Valid by', max_length=255, blank=True)
@@ -221,8 +228,10 @@ class Submission(models.Model):
     postal_address = models.CharField(max_length=255, blank=False)
     zip = models.CharField('ZIP', max_length=255, blank=True)
     country = models.CharField(max_length=255, blank=False)
-    hotel = models.CharField('Do you need a hotel?', max_length=255, blank=False, choices=YesNo, help_text='Select an item…')
-    accompanying = models.CharField('Will you be accompanying by a person?',max_length=255, blank=False, choices=YesNo, help_text='Select an item…')
+    hotel = models.CharField('Do you need a hotel?', max_length=255, blank=False, choices=YesNo,
+                             help_text='Select an item…')
+    accompanying = models.CharField('Will you be accompanying by a person?', max_length=255, blank=False, choices=YesNo,
+                                    help_text='Select an item…')
     created_at = models.DateField(blank=True, null=True, default=datetime.date.today)
 
     class Meta:
@@ -231,7 +240,6 @@ class Submission(models.Model):
 
     def __str__(self):
         return "Submission form"
-
 
 
 @python_2_unicode_compatible
@@ -244,6 +252,39 @@ class News(models.Model):
     class Meta:
         verbose_name = 'News List'
         verbose_name_plural = 'News List'
+
+    def __str__(self):
+        return self.title
+
+
+
+@python_2_unicode_compatible
+class Practical(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.TextField(blank=True)
+    order = models.PositiveIntegerField(default=0, blank=False, null=False)
+
+    class Meta:
+        verbose_name = 'Practical Info'
+        verbose_name_plural = 'Practical Info'
+        ordering = ('order',)
+
+    def __str__(self):
+        return self.title
+
+
+@python_2_unicode_compatible
+class PracticalBlock(models.Model):
+    title = models.CharField(max_length=255, blank=True)
+    text = models.TextField()
+    photo = models.ImageField(upload_to=RandomFileName('practical'), blank=True)
+    link = models.URLField(blank=True)
+    practical = models.ForeignKey(Practical, on_delete=models.CASCADE, related_name='practical_block')
+
+    class Meta:
+        verbose_name = 'Practical Info Block'
+        verbose_name_plural = 'Practical Info Block'
+        ordering = ('pk',)
 
     def __str__(self):
         return self.title

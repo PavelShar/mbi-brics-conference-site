@@ -12,5 +12,33 @@
     {% include "2017/pages/landing/sections/visa.html" %}
     {% include "2017/pages/landing/sections/organizers.html" %}
     {% include "2017/pages/landing/sections/publications.html" %}
+    {% include "2017/pages/landing/sections/practical.html" %}
+    {% include "2017/pages/landing/sections/map.html" %}
+{% endblock %}
 
+
+{% block scripts %}
+    {{ block.super }}
+    <script src="//api-maps.yandex.ru/2.1/?lang=en_US" type="text/javascript"></script>
+    <script>
+        var myMap;
+
+        // Дождёмся загрузки API и готовности DOM.
+        ymaps.ready(init);
+
+        function init() {
+            myMap = new ymaps.Map('map-container', {
+                center: [59.980088, 30.327602],
+                zoom: 15,
+                controls: []
+            }, {});
+
+            myPlacemark = new ymaps.Placemark([59.980198, 30.327425], {
+                balloonContentHeader: "Conference Locations",
+                balloonContentBody: "{{ footer.address_text|safe }}",
+            });
+            myMap.geoObjects.add(myPlacemark);
+        }
+
+    </script>
 {% endblock %}

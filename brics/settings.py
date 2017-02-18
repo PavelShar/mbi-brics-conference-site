@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
@@ -26,7 +25,6 @@ SECRET_KEY = 'qxi8s6n*nd8svglvn3yb4gng_2nz2a@=)0=&c(!eo)rgeeckmy'
 DEBUG = True
 
 ALLOWED_HOSTS = ['192.168.99.100', '192.168.1.2', 'mbi.spb.hse.ru']
-
 
 # Application definition
 
@@ -75,7 +73,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'brics.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
@@ -86,6 +83,10 @@ DATABASES = {
     }
 }
 
+
+SOUTH_DATABASE_ADAPTERS = {
+    'default': 'south.db.sqlite3'
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
@@ -105,31 +106,22 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'Europe/Moscow'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.10/howto/static-files/
-
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR + '/files/static/'
-
 MEDIA_ROOT = BASE_DIR + '/files/media/'
-MEDIA_URL = '/media/'  #put whatever you want that when url is rendered it will be /media/imagename.jpg
+MEDIA_URL = '/media/'
 
-
+# Google ReCaptcha
 NOCAPTCHA = True
 RECAPTCHA_PUBLIC_KEY = '6LemBBYUAAAAAIT4ZfsyYnurCYNrQ8V0e3jfYCc_'
 RECAPTCHA_PRIVATE_KEY = '6LemBBYUAAAAADt-eL_n1s-ARUGsNnS3NEyhqcdY'

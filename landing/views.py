@@ -63,3 +63,15 @@ def visa_steps(request):
     }
 
     return render(request, '2017/pages/visa/visa.html', context)
+
+
+
+def practical_info(request):
+    context = {
+        'base_info': BaseInfo.objects.first(),
+        'menus': Menu.objects.all(),
+        'footer': Footer.objects.first(),
+        'practicals': Practical.objects.all()
+    }
+
+    return render(request, '2017/pages/practical/practical.html', context)

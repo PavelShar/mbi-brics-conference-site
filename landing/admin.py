@@ -31,10 +31,11 @@ admin.site.register(Publications)
 
 class BaseInfoAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None, {'fields': ['event_type', 'event_title', 'event_date', 'event_place', 'language']}),
+        (None, {'fields': ['event_type', 'event_title', 'event_date', 'event_place', 'language', 'background_image']}),
         ('Submission', {'fields': ['submission_open', 'submission_details', 'submission_help']}),
         ('Works invitation', {'fields': ['works_invitation']}),
-        ('Visa', {'fields': ['visa_header', 'visa_main_text', 'visa_find_nearest_link', 'no_visa_requirement_link']})
+        ('Visa', {'fields': ['visa_header', 'visa_main_text', 'visa_find_nearest_link', 'no_visa_requirement_link']}),
+        ('Practical Info', {'fields': ['practical_header', 'practical_main_text']})
     ]
 
 
@@ -77,11 +78,28 @@ class NewsAdmin(admin.ModelAdmin):
 admin.site.register(News, NewsAdmin)
 
 
+#
+# Visa Steps
+#
 class VisaStepsBlockAdminInline(admin.StackedInline):
     model = VisaStepsBlock
-    extra = 1
+    extra = 0
 
 class VisaStepsAdmin(SortableAdminMixin, admin.ModelAdmin):
     inlines = (VisaStepsBlockAdminInline, )
 
 admin.site.register(VisaSteps, VisaStepsAdmin)
+
+
+#
+# Practical Info
+#
+
+class PracticalBlockAdminInline(admin.StackedInline):
+    model = PracticalBlock
+    extra = 0
+
+class PracticalAdmin(SortableAdminMixin, admin.ModelAdmin):
+    inlines = (PracticalBlockAdminInline, )
+
+admin.site.register(Practical, PracticalAdmin)
