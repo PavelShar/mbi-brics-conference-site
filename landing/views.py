@@ -40,18 +40,7 @@ def submission_form(request):
             form = SubmissionForm(request.POST or None)
             if form.is_valid():
                 form.save()
-
-
-                # email = form['email'].value()
-                # if len(email) > 0:
-
-                    # send_mail(
-                    #     'Thank you for your submission',
-                    #     '',
-                    #     'BRICS Conference Site',
-                    #     [email],
-                    #     fail_silently=False,
-                    # )
+                form.send_email_success_async()
 
                 return HttpResponseRedirect(reverse('submission_success'))
 
