@@ -125,3 +125,13 @@ MEDIA_URL = '/media/'
 NOCAPTCHA = True
 RECAPTCHA_PUBLIC_KEY = '6LemBBYUAAAAAIT4ZfsyYnurCYNrQ8V0e3jfYCc_'
 RECAPTCHA_PRIVATE_KEY = '6LemBBYUAAAAADt-eL_n1s-ARUGsNnS3NEyhqcdY'
+
+
+# Email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.hse.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'spb/brics-ic@hse.ru'
+EMAIL_HOST_PASSWORD = '#J97hw'
+DEFAULT_EMAIL_FROM = 'brics-ic@hse.ru'
+EMAIL_USE_TLS = False

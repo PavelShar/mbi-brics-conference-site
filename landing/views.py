@@ -1,3 +1,4 @@
+from django.core.mail import send_mail
 from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
@@ -39,6 +40,19 @@ def submission_form(request):
             form = SubmissionForm(request.POST or None)
             if form.is_valid():
                 form.save()
+
+
+                # email = form['email'].value()
+                # if len(email) > 0:
+
+                    # send_mail(
+                    #     'Thank you for your submission',
+                    #     '',
+                    #     'BRICS Conference Site',
+                    #     [email],
+                    #     fail_silently=False,
+                    # )
+
                 return HttpResponseRedirect(reverse('submission_success'))
 
         return render(request, '2017/pages/submission/form.html', context)
