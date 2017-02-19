@@ -137,9 +137,13 @@ CELERY_TIMEZONE = TIME_ZONE
 # Email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-EMAIL_HOST = 'smtp.hse.com'
+EMAIL_HOST = 'smtp.hse.ru'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'spb\brics-ic@hse.ru'
+EMAIL_HOST_USER = 'brics-ic@spb'
 EMAIL_HOST_PASSWORD = '#J97hw'
 DEFAULT_EMAIL_FROM = 'brics-ic@hse.ru'
 EMAIL_USE_TLS = True
+
+
+EMAIL_TITLE_TEMPLATE = 'Thank you for your submission!'
+EMAIL_FROM_TEXT = 'BRICS Global Business & Innovation Conference'
