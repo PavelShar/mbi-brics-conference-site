@@ -40,7 +40,7 @@ def submission_form(request):
             form = SubmissionForm(request.POST or None)
             if form.is_valid():
                 form.save()
-                form.send_email_success_async()
+                # form.send_email_success_async()
 
                 return HttpResponseRedirect(reverse('submission_success'))
 
