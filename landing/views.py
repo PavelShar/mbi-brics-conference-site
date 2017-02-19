@@ -57,6 +57,17 @@ def submission_success(request):
 
 
 
+def submission_guidelines(request):
+    context = {
+        'base_info': BaseInfo.objects.first(),
+        'menus': Menu.objects.all(),
+        'footer': Footer.objects.first(),
+        'guidelines' : SubmissionGuidelines.objects.all()
+    }
+
+    return render(request, '2017/pages/submission/guidelines.html', context)
+
+
 def visa_steps(request):
     context = {
         'base_info': BaseInfo.objects.first(),

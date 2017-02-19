@@ -1,0 +1,18 @@
+{% extends '2017/components/custom_page.html' %}
+{% block page-content %}
+
+    {% for guideline in guidelines %}
+        <div class="form-welcome">
+            <div class="container">
+
+
+                <div class="form-title col-lg-12 col-lg-offset-2 col-sm-offset-2">{{ guideline.title }}</div>
+                <div class="form-text col-lg-8 col-sm-12 col-lg-offset-2 col-sm-offset-2">{{ guideline.description|linebreaks }}</div>
+
+
+            </div>
+        </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}

@@ -243,6 +243,22 @@ class Submission(models.Model):
 
 
 @python_2_unicode_compatible
+class SubmissionGuidelines(models.Model):
+    title = models.CharField('Name', max_length=255, blank=True)
+    description = models.TextField('Description')
+    order = models.PositiveIntegerField(default=0, blank=False, null=False)
+
+    class Meta:
+        verbose_name = 'Submission Guidelines'
+        verbose_name_plural = 'Submission Guidelines'
+        ordering = ('order',)
+
+    def __str__(self):
+        return self.title
+
+
+
+@python_2_unicode_compatible
 class News(models.Model):
     title = models.CharField(max_length=255, blank=False, default='')
     text = models.TextField(blank=False)

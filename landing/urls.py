@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^brics/$', views.index, name='index'),
     url(r'^brics/submit/$', views.submission_form, name='submission_form'),
     url(r'^brics/submit/success/$', views.submission_success, name='submission_success'),
+    url(r'^brics/submit/guidelines/$', views.submission_guidelines, name='submission_guidelines'),
     url(r'^brics/visa/$', views.visa_steps, name='visa_steps'),
     url(r'^brics/practical/$', views.practical_info, name='practical_info'),
 ]

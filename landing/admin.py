@@ -67,6 +67,7 @@ class SubmissionAdmin(ImportExportModelAdmin):
 
 
 admin.site.register(Submission, SubmissionAdmin)
+admin.site.register(SubmissionGuidelines, SortableAdmin)
 admin.site.register(BaseInfo, BaseInfoAdmin)
 
 
