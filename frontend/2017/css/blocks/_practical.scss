@@ -1,9 +1,5 @@
 section.practical {
 
-  ul {
-    margin-left: -40px;
-  }
-
   h2 {
     margin-bottom: 40px;
   }
@@ -64,6 +60,11 @@ section.practical {
         padding-top: 5px;
         font-size: 14px;
         color: #5d5d5d;
+
+        ul {
+          margin-left: -40px;
+        }
+
       }
     }
 
