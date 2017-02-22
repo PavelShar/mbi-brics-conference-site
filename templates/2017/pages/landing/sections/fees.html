@@ -1,0 +1,27 @@
+{% load django_markdown %}
+<section class="fees" id="fees">
+
+    <div class="container">
+        <h2>{{ base_info.fees_header }}</h2>
+
+        <div class="fees-nums">
+            <div class="row">
+
+                {% for fee in fees %}
+                    <div class="col-lg-3 col-md-3 col-sm-3 fees-item">
+                        <div class="sum">{{ fee.num }}</div>
+                        <div class="caption">{{ fee.type }}</div>
+                        <div class="type">{{ fee.category }}</div>
+                    </div>
+                {% endfor %}
+            </div>
+
+
+        </div>
+
+        <div>
+            {{ base_info.fees_text|markdown }}
+        </div>
+    </div>
+
+</section>

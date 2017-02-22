@@ -1,3 +1,4 @@
+{% load django_markdown %}
 <section class="submission-details" id="submission-details">
     <div class="container">
         <div class="row col-lg-12">
@@ -6,7 +7,7 @@
             <div class="text">
 
                 {% if base_info.submission_open %}
-                    <div>Submissions of papers must be made through the Conference website.</div>
+                    <div>{{ base_info.submission_start|markdown }}</div>
                     <div><a href="/brics/submit" target="_blank">
                         <button>Submit proposal</button>
                     </a></div>
@@ -14,8 +15,7 @@
                     <div>Submission is closed</div>
                 {% endif %}
 
-                <div>{{ base_info.submission_details }}</div>
-                <div class="padding-vertical">Email: <span class="email">{{ footer.email }}</span></div>
+                <div>{{ base_info.submission_details|markdown }}</div>
             </div>
 
         </div>
@@ -26,7 +26,7 @@
     <div class="container">
         <div class="row col-lg-12">
             <div>
-                {{ base_info.works_invitation }}
+                {{ base_info.works_invitation|markdown }}
             </div>
         </div>
     </div>

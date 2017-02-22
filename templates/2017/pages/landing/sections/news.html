@@ -1,3 +1,4 @@
+{% load django_markdown %}
 <section class="news" id="news">
     <div class="container">
 
@@ -9,7 +10,7 @@
                 <div class="news-container col-lg-12">
 
                     <div class="title">{{ new.title }}</div>
-                    <div class="text">{{ new.text }}</div>
+                    <div class="text">{{ new.text|markdown }}</div>
                     <div class="date">{{ new.date }}</div>
 
                 </div>

@@ -1,5 +1,7 @@
 from adminsortable2.admin import SortableAdminMixin
 from django.contrib import admin
+from django_markdown.admin import MarkdownModelAdmin
+from django_markdown.widgets import AdminMarkdownWidget
 from import_export.admin import ImportExportModelAdmin
 from import_export import resources, fields
 from .models import *
@@ -26,16 +28,17 @@ class OrganizersAdmin(admin.ModelAdmin):
         return ','.join(set(obj.committee))
 
 admin.site.register(Organizers, OrganizersAdmin)
-admin.site.register(Publications)
-
+admin.site.register(Publications, MarkdownModelAdmin)
 
 class BaseInfoAdmin(admin.ModelAdmin):
+    formfield_overrides = {MarkdownField: {'widget': AdminMarkdownWidget}}
     fieldsets = [
         (None, {'fields': ['event_type', 'event_title', 'event_date', 'event_place', 'language', 'background_image']}),
-        ('Submission', {'fields': ['submission_open', 'submission_details', 'submission_help']}),
+        ('Submission', {'fields': ['submission_open', 'submission_start','submission_details', 'submission_help']}),
         ('Works invitation', {'fields': ['works_invitation']}),
         ('Visa', {'fields': ['visa_header', 'visa_main_text', 'visa_find_nearest_link', 'no_visa_requirement_link']}),
-        ('Practical Info', {'fields': ['practical_header', 'practical_main_text']})
+        ('Practical Info', {'fields': ['practical_header', 'practical_main_text']}),
+        ('Fees', {'fields': ['fees_header', 'fees_text']})
     ]
 
 
@@ -72,6 +75,7 @@ admin.site.register(BaseInfo, BaseInfoAdmin)
 
 
 class NewsAdmin(admin.ModelAdmin):
+    formfield_overrides = {MarkdownField: {'widget': AdminMarkdownWidget}}
     list_display = ('date', 'title', 'published',)
     list_filter = ['published']
     search_fields = ['title', 'text']
@@ -83,10 +87,12 @@ admin.site.register(News, NewsAdmin)
 # Visa Steps
 #
 class VisaStepsBlockAdminInline(admin.StackedInline):
+    formfield_overrides = {MarkdownField: {'widget': AdminMarkdownWidget}}
     model = VisaStepsBlock
     extra = 0
 
 class VisaStepsAdmin(SortableAdminMixin, admin.ModelAdmin):
+
     inlines = (VisaStepsBlockAdminInline, )
 
 admin.site.register(VisaSteps, VisaStepsAdmin)
@@ -101,6 +107,8 @@ class PracticalBlockAdminInline(admin.StackedInline):
     extra = 0
 
 class PracticalAdmin(SortableAdminMixin, admin.ModelAdmin):
+    formfield_overrides = {MarkdownField: {'widget': AdminMarkdownWidget}}
     inlines = (PracticalBlockAdminInline, )
 
 admin.site.register(Practical, PracticalAdmin)
+admin.site.register(Fees, SortableAdmin)

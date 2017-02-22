@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'bootstrapform',
     'import_export',
     'adminsortable2',
-    'captcha'
+    'captcha',
+    'django_markdown',
 ]
 
 MIDDLEWARE = [
@@ -147,3 +148,6 @@ EMAIL_USE_TLS = True
 
 EMAIL_TITLE_TEMPLATE = 'Thank you for your submission!'
 EMAIL_FROM_TEXT = 'BRICS Global Business & Innovation Conference'
+
+# Markdown
+MARKDOWN_EXTENSIONS = ['extra']

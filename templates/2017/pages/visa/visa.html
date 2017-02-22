@@ -1,4 +1,5 @@
 {% extends '2017/components/custom_page.html' %}
+{% load django_markdown %}
 {% block page-content %}
 
 
@@ -7,7 +8,7 @@
             <h2>{{ base_info.visa_header }}</h2>
 
             <div class="visa-welcome-block">
-                <div>{{ base_info.visa_main_text }}</div>
+                <div>{{ base_info.visa_main_text|markdown }}</div>
                 <div class="visa-btn-after-block">
                     {% if base_info.visa_find_nearest_link %}
                         <a href="{{ base_info.visa_find_nearest_link }}" target="_blank">
@@ -57,9 +58,9 @@
                         {% for step_block in step.visa_step_block.all %}
                             <div class="visa-step-block">
                                 <div class="title">{{ step_block.title }}</div>
-                                <div class="text">{{ step_block.text|linebreaks }}</div>
+                                <div class="text">{{ step_block.text|markdown }}</div>
                                 {% if step_block.important %}
-                                    <div class="important">{{ step_block.important }}</div>
+                                    <div class="important">{{ step_block.important|markdown }}</div>
                                 {% endif %}
                             </div>
                         {% endfor %}

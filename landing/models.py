@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 import datetime
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
+from django_markdown.models import MarkdownField
 from multiselectfield import MultiSelectField
 
 from .helpers import *
@@ -48,8 +49,8 @@ class VisaSteps(models.Model):
 @python_2_unicode_compatible
 class VisaStepsBlock(models.Model):
     title = models.CharField(max_length=255, blank=True)
-    text = models.TextField(blank=True)
-    important = models.TextField(blank=True)
+    text = MarkdownField(blank=True)
+    important = MarkdownField(blank=True)
     visa_step = models.ForeignKey(VisaSteps, on_delete=models.CASCADE, related_name='visa_step_block')
 
     class Meta:
@@ -70,15 +71,18 @@ class BaseInfo(models.Model):
     background_image = models.ImageField('Photo', upload_to=RandomFileName('main'), default='')
     language = models.CharField('Working language', max_length=255)
     submission_open = models.BooleanField('Open submission', default=True, blank=True)
-    submission_details = models.TextField('Submission details text', default='')
-    submission_help = models.TextField('Submission help text', default='')
-    works_invitation = models.TextField('Works invitation text', default='')
+    submission_start = MarkdownField('Submission above button text', default='')
+    submission_details = MarkdownField('Submission details text', default='')
+    submission_help = MarkdownField('Submission help text', default='')
+    works_invitation = MarkdownField('Works invitation text', default='')
     visa_header = models.CharField('Visa Header', max_length=255, default='Visa Requirements')
-    visa_main_text = models.TextField('Visa Main Text', default='')
+    visa_main_text = MarkdownField('Visa Main Text', default='')
     visa_find_nearest_link = models.URLField(blank=True)
     no_visa_requirement_link = models.URLField(blank=True)
     practical_header = models.CharField('Practical Info Header', max_length=255, default='BRICS Practical Information')
-    practical_main_text = models.TextField('Practical Info Main Text', default='')
+    practical_main_text = MarkdownField('Practical Info Main Text', default='')
+    fees_header = models.CharField(max_length=255, default='', blank=False)
+    fees_text = MarkdownField(default='', blank=True)
 
     class Meta:
         verbose_name = 'Base information'
@@ -121,7 +125,7 @@ class Speakers(models.Model):
 @python_2_unicode_compatible
 class Publications(models.Model):
     title = models.CharField('Title', max_length=255)
-    description = models.TextField('Description')
+    description = MarkdownField('Description')
 
     class Meta:
         verbose_name_plural = 'Publications'
@@ -261,7 +265,7 @@ class SubmissionGuidelines(models.Model):
 @python_2_unicode_compatible
 class News(models.Model):
     title = models.CharField(max_length=255, blank=False, default='')
-    text = models.TextField(blank=False)
+    text = MarkdownField(blank=False)
     date = models.DateField(blank=False, default=datetime.date.today)
     published = models.BooleanField(blank=False, default=True)
 
@@ -277,7 +281,7 @@ class News(models.Model):
 @python_2_unicode_compatible
 class Practical(models.Model):
     title = models.CharField(max_length=255)
-    description = models.TextField(blank=True)
+    description = MarkdownField(blank=True)
     order = models.PositiveIntegerField(default=0, blank=False, null=False)
 
     class Meta:
@@ -292,9 +296,10 @@ class Practical(models.Model):
 @python_2_unicode_compatible
 class PracticalBlock(models.Model):
     title = models.CharField(max_length=255, blank=True)
-    text = models.TextField()
+    text = MarkdownField()
     photo = models.ImageField(upload_to=RandomFileName('practical'), blank=True)
     link = models.URLField(blank=True)
+    link_placeholder = models.CharField(max_length=255, blank=True, default='')
     practical = models.ForeignKey(Practical, on_delete=models.CASCADE, related_name='practical_block')
 
     class Meta:
@@ -304,3 +309,20 @@ class PracticalBlock(models.Model):
 
     def __str__(self):
         return self.title
+
+
+@python_2_unicode_compatible
+class Fees(models.Model):
+    num = models.CharField(max_length=255, blank=True)
+    type = models.CharField(max_length=255, blank=True)
+    category = models.CharField(max_length=255, blank=True)
+    order = models.PositiveIntegerField(default=0, blank=False, null=False)
+
+    class Meta:
+        verbose_name = 'Fees'
+        verbose_name_plural = 'Fees'
+        ordering = ('order',)
+
+    def __str__(self):
+        return self.num + ' - ' + self.type + ' - ' + self.category
+

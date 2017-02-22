@@ -20,7 +20,8 @@ def index(request):
         'footer' : Footer.objects.first(),
         'prog_com' : Organizers.objects.filter(Q(committee__contains='prog')),
         'org_com': Organizers.objects.filter(Q(committee__contains='org')),
-        'publications' : Publications.objects.all()
+        'publications' : Publications.objects.all(),
+        'fees' : Fees.objects.all(),
     }
     return render(request, '2017/pages/landing/index.html', context)
 

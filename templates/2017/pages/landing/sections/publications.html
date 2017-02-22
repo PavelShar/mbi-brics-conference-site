@@ -1,10 +1,11 @@
+{% load django_markdown %}
 <section class="publications" id="publications">
     {% for publication in publications %}
         <div class="padding-vertical">
             <div class="container">
                 <h2>{{ publication.title }}</h2>
                 <div>
-                    {{ publication.description }}
+                    {{ publication.description|markdown }}
                 </div>
             </div>
         </div>
