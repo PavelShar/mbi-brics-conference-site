@@ -23,9 +23,10 @@ gulp.task('watch', ['css-2017'], function () {
 gulp.task('fonts-2017', function(){ return gulp.src('frontend/2017/fonts/**/*').pipe(gulp.dest('files/static/2017/fonts/'))});
 gulp.task('icons-2017', function(){ return gulp.src('frontend/2017/icons/**/*').pipe(gulp.dest('files/static/2017/icons/'))});
 gulp.task('img-2017', function(){ return gulp.src('frontend/2017/img/**/*').pipe(gulp.dest('files/static/2017/img/'))});
+gulp.task('favicons-2017', function(){ return gulp.src('frontend/2017/favicons/**/*').pipe(gulp.dest('files/static/2017/favicons/'))});
 gulp.task('js-libs-2017', function(){ return gulp.src(['frontend/2017/libs/**/*',]).pipe(gulp.dest('files/static/2017/libs')) });
 gulp.task('js-2017', function(){ return gulp.src(['frontend/2017/js/**/*.js',]).pipe(gulp.dest('files/static/2017/js/')) });
 
-gulp.task('build-2017', ['css-2017', 'fonts-2017', 'icons-2017', 'img-2017', 'js-2017', 'js-libs-2017']);
+gulp.task('build-2017', ['css-2017', 'fonts-2017', 'icons-2017', 'img-2017', 'favicons-2017', 'js-2017', 'js-libs-2017']);
 gulp.task('build-2015', function(){ return gulp.src('frontend/2015/**/*').pipe(gulp.dest('files/static/2015')); });
 gulp.task('default', ['watch']);
