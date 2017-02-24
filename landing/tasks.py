@@ -17,3 +17,15 @@ def send_submission_success_email_task(email, body):
         [email],
         fail_silently=False, html_message=body
     )
+
+
+
+@task(name="send_submission_new_email_task")
+def send_submission_new_email_task(title, body, email):
+    return send_mail(
+        title,
+        body,
+        settings.DEFAULT_EMAIL_FROM,
+        [email],
+        fail_silently=False,
+    )

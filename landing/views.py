@@ -42,6 +42,7 @@ def submission_form(request):
             if form.is_valid():
                 form.save()
                 form.send_email_success_async()
+                form.send_email_new_submission()
 
                 return HttpResponseRedirect(reverse('submission_success'))
 

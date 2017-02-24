@@ -23,6 +23,10 @@ class SubmissionForm(forms.ModelForm):
     def create_email_template(self):
         return render_to_string('2017/components/email.html', {'name': self.cleaned_data['first_name']})
 
+    def send_email_new_submission(self):
+        body = 'You have new submission from ' + self.cleaned_data['title'] + ' ' + self.cleaned_data['first_name'] + ' ' + self.cleaned_data['second_name'] + '.'
+        send_submission_new_email_task.delay('New submission', body, settings.DEFAULT_EMAIL_FROM)
+
     class Meta:
         model = Submission
         exclude = ('created_at',)
