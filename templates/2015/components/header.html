@@ -1,0 +1,26 @@
+{% load static %}
+<div class="row">
+    <div class="nav-inner row-content buffer-left buffer-right even clear-after" style='text-align:center;'>
+
+        <div id="brand" class='brand' style='display:block;float:none; padding: 20px 0px;'>
+            <h1 class="reset">
+                <a href="http://spb.hse.ru/en"><img src="{% static "2015/img/logos/logo_hse_filials_invert.png" %}" alt="logo" style='height: 50px;margin: 0 auto;'></a>
+            </h1>
+        </div><!-- brand -->
+
+        <a id="menu-toggle" href="#"><i class="fa fa-bars fa-lg"></i></a>
+        <nav style='float:none'>
+            <ul class="reset" role="navigation">
+                <li class="menu-item" onclick=$('#index').scrollView(0);><a>Main</a></li>
+                <li class="menu-item" onclick=$('#themes').scrollView(15);><a>Themes</a></li>
+                <li class="menu-item" onclick=$('#confProg').scrollView(-35);><a>Programme</a></li>
+                <li class="menu-item" onclick=$('#people').scrollView(0);><a>People</a></li>
+                <li class="menu-item" onclick=$('#schedule').scrollView(0);><a>Schedule</a></li>
+                <li class="menu-item" onclick=$('#invitation').scrollView(0);><a>Invitation</a></li>
+                <li class="menu-item" onclick=$('#fees').scrollView(0);><a>Fees</a></li>
+                <li class="menu-item" onclick=$('#location').scrollView(-70);><a>Location</a></li>
+                <li class="menu-item" onclick=$('#contacts').scrollView(0);><a>Contacts</a></li>
+            </ul>
+        </nav>
+    </div><!-- row-content -->
+</div><!-- row -->

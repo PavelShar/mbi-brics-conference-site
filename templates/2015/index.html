@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description"
+          content="«Innovation in Management and Business: Future Global Challenge». International Scientific Conference. November 27-28, 2015">
+    <style type="text/css">@-ms-viewport {
+        width: device-width;
+    }</style>
+    <title>«Innovation in Management and Business: Future Global Challenge»</title>
+
+    <link rel="stylesheet" href="{% static "2015/css/layers.min.css" %}" media="screen">
+    <link rel="stylesheet" href="{% static "2015/css/font-awesome.min.css" %}" media="screen">
+    <link rel="stylesheet" href="{% static "2015/css/style.css" %}" media="screen">
+    <link rel="stylesheet" href="{% static "2015/css/custom.css" %}" media="screen">
+    <link rel='stylesheet' href="{% static "2015/css/fonts.css" %}" type='text/css'>
+
+
+    <!--[if lt IE 9]><script src='{% static "2015/js/ie/respond.min.js" %}'></script><![endif]-->
+
+    <link rel="icon" href="{% static '2015/img/favicon.ico' %}">
+
+</head>
+
+<body class="page">
+
+<header role="banner" class="transparent light">{% include '2015/components/header.html' %}</header>
+<main role="main" id='index'>
+
+    <div id="intro-wrap" class="full-width full-height">{% include '2015/components/carousel.html' %}</div>
+    <div id="main">
+
+        {% include '2015/components/themes.html' %}
+        {% include '2015/components/programme.html' %}
+        {% include '2015/components/speakers.html' %}
+        {% include '2015/components/timeline.html' %}
+        {% include '2015/components/invitation.html' %}
+        {% include '2015/components/fees.html' %}
+        {% include '2015/components/location.html' %}
+
+    </div>
+</main>
+
+<footer role="contentinfo" id='contacts'>{% include "2015/components/footer.html" %}</footer>
+
+<script src="{% static "2015/js/jquery-2.1.4.min.js" %}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script src="{% static "2015/js/plugins.js" %}"></script>
+<script src="{% static "2015/js/beetle.js" %}"></script>
+<script src="{% static "2015/js/custom.js" %}"></script>
+
+</body>
+
+</html>

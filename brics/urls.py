@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
+from django.views.generic import TemplateView
 
 urlpatterns = [
     url(r'^', include('landing.urls')),
+    url(r'^2015/', TemplateView.as_view(template_name="2015/index.html")),
     url(r'^admin/', admin.site.urls),
     url(r'^markdown/', include('django_markdown.urls')),
 ]
