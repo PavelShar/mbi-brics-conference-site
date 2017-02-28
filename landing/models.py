@@ -199,7 +199,7 @@ class Organizers(models.Model):
 
 @python_2_unicode_compatible
 class Submission(models.Model):
-    Title = (('', ''), ('prog', 'Prof'), ('dr', 'Dr'), ('mr', 'Mr'), ('mrs', 'Mrs'), ('ms', 'Ms'))
+    Title = (('', ''), ('Prof', 'Prof'), ('Dr', 'Dr'), ('Mr', 'Mr'), ('Mrs', 'Mrs'), ('Ms', 'Ms'))
     Attendance = (('', ''), ('reporter', 'Reporter'), ('participant', 'Participant, without a report'))
     YesNo = (('', ''), ('yes', 'Yes'), ('no', 'No'))
     Areas = [('', '')] + [(str(c.id), str(c.title)) for c in TopicAreas.objects.all()]
