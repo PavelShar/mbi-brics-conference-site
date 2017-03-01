@@ -1,3 +1,5 @@
+import logging
+
 from adminsortable2.admin import SortableAdminMixin
 from django.contrib import admin
 from django_markdown.admin import MarkdownModelAdmin
@@ -43,6 +45,19 @@ class BaseInfoAdmin(admin.ModelAdmin):
 
 
 class SubmissionResource(resources.ModelResource):
+
+    def export_field(self, field, obj):
+        field_name = self.get_field_name(field)
+        method = getattr(self, 'dehydrate_%s' % field_name, None)
+        logging.debug(field_name)
+        if method is not None:
+            return method(obj)
+        else:
+            display = getattr(obj, 'get_%s_display' % field_name, None)
+            if display:
+                return display()
+        return field.export(obj)
+
     class Meta:
         model = Submission
         exclude = ('id',)
