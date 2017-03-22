@@ -11,7 +11,7 @@
 @media only screen and (max-width: 1200px)
 
   .nav_row
-    margin: 0 !important
+    //margin: 0 !important
 
   header
     .logo
@@ -24,11 +24,13 @@
       position: absolute
       top: -50px
       width: 100%
-      z-index: 1
+      z-index: 2
       background-color: #0B2977
+      left: 0px
+      text-align: center
     .top_menu
       display: none
-      padding: 145px 0 50px
+      padding: 100px 0 50px
       > ul
         li
           display: block
@@ -97,6 +99,7 @@
 @media only screen and (max-width: 768px)
 
   header
+    min-height: 745px
     .video-wrap
       background-image: url(../video/poster.jpg)
       background-size: cover
@@ -131,13 +134,19 @@
 @media only screen and (max-width: 480px)
 
   header
+
+    .head_additional_logos
+      //text-align: center
+      img
+        margin: 5px 0
+
     .logo
       img
-        width: 230px
+        height: 80px
     .toggle_menu
       margin-top: 11px
     .main_title
-      padding-top: 20px !important
+      padding-top: 5px !important
       h1
         font-size: em(35px)
       h3
@@ -189,7 +198,7 @@
   header
     .logo
       img
-        width: 200px
+        height: 80px
 
   .toggle_menu
     margin-top: 9px
