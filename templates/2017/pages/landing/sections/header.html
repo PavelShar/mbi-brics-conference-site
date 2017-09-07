@@ -15,20 +15,18 @@
                 <nav class="top_menu">
                     <ul>
                         {% for menu in menus %}
-
-                            {% if menu.anchor == '#news' and news %}
-
+                            {% if menu.externalLink %}
+                                <li><a href="{{menu.externalURL}}" target="_blank">{{menu.title}}</a></li>
+                            {% else %}
+                                {% if menu.anchor == '#news' and news %}
+                                        <li><a href="javascript:void(0)"
+                                           onclick="scrollingTo('{{ menu.section }}')">{{ menu.title }}</a></li>
+                                {% elif menu.anchor != '#news' %}
                                     <li><a href="javascript:void(0)"
-                                       onclick="scrollingTo('{{ menu.section }}')">{{ menu.title }}</a></li>
-
-                            {% elif menu.anchor != '#news' %}
-
-                                <li><a href="javascript:void(0)"
-                                       onclick="scrollingTo('{{ menu.section }}')">{{ menu.title }}</a></li>
-
+                                           onclick="scrollingTo('{{ menu.section }}')">{{ menu.title }}</a></li>
+                                {% endif %}
                             {% endif %}
                         {% endfor %}
-                        <li><a href="https://spb.hse.ru/international/brics/">International Summer School</a></li>
                     </ul>
                 </nav>
             </div>

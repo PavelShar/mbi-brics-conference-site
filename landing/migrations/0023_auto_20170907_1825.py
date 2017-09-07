@@ -22,14 +22,4 @@ class Migration(migrations.Migration):
             name='externalURL',
             field=models.URLField(blank=True, verbose_name='External URL'),
         ),
-        migrations.AlterField(
-            model_name='submission',
-            name='section_1',
-            field=models.CharField(choices=[('', '')], help_text='Sections your report corresponds to (by priority of compliance)', max_length=255),
-        ),
-        migrations.AlterField(
-            model_name='submission',
-            name='section_2',
-            field=models.CharField(blank=True, choices=[('', '')], help_text='Sections your report corresponds to (by priority of compliance)', max_length=255),
-        ),
     ]

@@ -18,8 +18,10 @@ ORGANIZERS_CHOICES = (
 @python_2_unicode_compatible
 class Menu(models.Model):
     title = models.CharField(max_length=255)
-    section = models.CharField(max_length=255)
-    anchor = models.CharField(max_length=255)
+    section = models.CharField(max_length=255, default='', blank=True)
+    anchor = models.CharField(max_length=255, default='', blank=True)
+    externalLink = models.BooleanField('External link', default=False, blank=True)
+    externalURL = models.URLField('External URL', blank=True)
     order = models.PositiveIntegerField(default=0, blank=False, null=False)
 
     class Meta:
